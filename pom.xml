@@ -7,15 +7,14 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>RiskMS Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
-  
   <dependencies>
-    <dependency>
+ <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
     
     <dependency>
     	<groupId>antlr</groupId>
@@ -323,10 +322,9 @@
         <version>2.5</version>    
         <scope>provided</scope>    
     </dependency>
-    
+	
   </dependencies>
   <build>
-    <finalName>RiskMS</finalName>
     <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
