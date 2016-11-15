@@ -17,4 +17,7 @@ public interface UserBusiness {
 	
 	public List<User> getAllUser();
 	
+	//获得某人可选的跟踪者
+	public List<User> getOptionalTrackers(Long userid);
+	
 }

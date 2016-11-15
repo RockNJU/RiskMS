@@ -41,4 +41,10 @@ public class UserBusinessImpl implements UserBusiness {
 		return userDao.getAll();
 	}
 
+	@Override
+	public List<User> getOptionalTrackers(Long userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
