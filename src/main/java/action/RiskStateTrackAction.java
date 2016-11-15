@@ -18,7 +18,7 @@ public class RiskStateTrackAction extends BaseAction{
 	@Autowired
 	private RiskItemBusiness riskItemBusiness;
 	private RiskItem riskItem;
-	
+	@Autowired
 	private RiskStateTrackBusiness riskStateTrackBusiness;
 	private RiskStateTrack riskStateTrack;
 	

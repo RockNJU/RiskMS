@@ -14,6 +14,7 @@ public class LoginAction extends BaseAction{
 	@Autowired
 	private UserBusiness userBusiness; 
 	private User user;
+	private User user_add;
 
 	
 	public UserBusiness getUserBusiness() {
@@ -28,6 +29,15 @@ public class LoginAction extends BaseAction{
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
+	public User getUser_add() {
+		return user_add;
+	}
+	public void setUser_add(User user_add) {
+		this.user_add = user_add;
+	}
+	
 	public String userLogin() throws ServletException,IOException{
 		String message="";
 		//获取name所对应的user对象
@@ -49,7 +59,9 @@ public class LoginAction extends BaseAction{
 	}
 	
 	
-		
+	public String addUser(){
+		return userBusiness.addUser(user_add);
+	}	
 	
 	
 }

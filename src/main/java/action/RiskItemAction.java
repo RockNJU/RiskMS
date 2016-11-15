@@ -19,6 +19,7 @@ public class RiskItemAction extends BaseAction{
 	@Autowired
 	private RiskItemBusiness riskItemBusiness;
 	private RiskItem riskItem;
+	@Autowired
 	private UserBusiness userBusiness; 
 	private User user;
 	
