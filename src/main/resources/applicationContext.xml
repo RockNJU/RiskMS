@@ -62,9 +62,9 @@
 	<context:component-scan base-package="action" />
 	<context:component-scan base-package="business" />
 	<context:component-scan base-package="dao" />
-	<context:component-scan base-package="businessimpl" />
+	<context:component-scan base-package="businessImpl" />
 	
-	<context:component-scan base-package="daoimpl" />
+	<context:component-scan base-package="daoImpl" />
 	<context:component-scan base-package="model" />
 	
 	<!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
