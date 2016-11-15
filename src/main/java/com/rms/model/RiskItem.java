@@ -7,12 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="riskItem")
 public class RiskItem {
-	//content varchar(255),
-	//probability int(10),
-	//effects int(10),
-	//triggers varchar(255),
-	//submitter int(255),
-	//tracker varchar(255),
+	
 	@Id
 	private Long riskItem_id;
 	private String content;

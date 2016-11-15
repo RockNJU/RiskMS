@@ -35,6 +35,8 @@ public class RiskItemAction extends BaseAction{
 		this.riskItem = riskItem;
 	}
 	
+	
+	
 	//获得所有风险条目
 	public List<RiskItem> getAllRiskItem(){	
 		return riskItemBusiness.getAllRiskItem();	
@@ -46,5 +48,17 @@ public class RiskItemAction extends BaseAction{
 		return riskItemBusiness.getMyRiskItem(current.getUser_id());
 	}
 	
+	//获得可选的跟踪者
+	public List<User> getOptionalTrackers(){
+		User current=(User) session.get("user");
+		return userBusiness.getOptionalTrackers(current.getUser_id());
+	}
 	
+	//增加风险条目
+	public String addRiskItem(RiskItem temp){
+		Long id=(long) (riskItemBusiness.getAllRiskItem().size()+2);	
+		temp.setRiskItem_id(id);	
+		return riskItemBusiness.addRiskItem(temp);
+		
+	}
 }
