@@ -12,22 +12,20 @@ public class RiskStateTrack {
 	
 	@Id
 	private Long riskStateTrack_id;
-	private Long specificRiskId;
+	private Long riskItemId;
 	private int state;
 	private String content;
 	private Date createTime;
+	private Long previousStateId;
+	
+	
 	public Long getRiskStateTrack_id() {
 		return riskStateTrack_id;
 	}
 	public void setRiskStateTrack_id(Long riskStateTrack_id) {
 		this.riskStateTrack_id = riskStateTrack_id;
 	}
-	public Long getSpecificRiskId() {
-		return specificRiskId;
-	}
-	public void setSpecificRiskId(Long specificRiskId) {
-		this.specificRiskId = specificRiskId;
-	}
+	
 	public int getState() {
 		return state;
 	}
@@ -45,6 +43,18 @@ public class RiskStateTrack {
 	}
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	public Long getRiskItemId() {
+		return riskItemId;
+	}
+	public void setRiskItemId(Long riskItemId) {
+		this.riskItemId = riskItemId;
+	}
+	public Long getPreviousStateId() {
+		return previousStateId;
+	}
+	public void setPreviousStateId(Long previousStateId) {
+		this.previousStateId = previousStateId;
 	}
 	
 	

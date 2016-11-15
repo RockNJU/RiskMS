@@ -14,6 +14,8 @@ public class RiskItem {
 	private int probability;
 	private int effects;
 	private String triggers;
+	private int recogtime;
+	private int problemtime;
 	private int submitter;
 	private String tracker;
 	
@@ -31,6 +33,18 @@ public class RiskItem {
 	}
 	public int getProbability() {
 		return probability;
+	}
+	public int getRecogtime() {
+		return recogtime;
+	}
+	public void setRecogtime(int recogtime) {
+		this.recogtime = recogtime;
+	}
+	public int getProblemtime() {
+		return problemtime;
+	}
+	public void setProblemtime(int problemtime) {
+		this.problemtime = problemtime;
 	}
 	public void setProbability(int probability) {
 		this.probability = probability;
