@@ -1,4 +1,4 @@
-package com.rms.action;
+package action;
 
 import java.util.Map;
 

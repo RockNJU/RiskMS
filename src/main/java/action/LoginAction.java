@@ -1,4 +1,4 @@
-package com.rms.action;
+package action;
 
 import java.io.IOException;
 
@@ -6,8 +6,8 @@ import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.rms.business.UserBusiness;
-import com.rms.model.User;
+import business.UserBusiness;
+import model.User;
 
 @Repository
 public class LoginAction extends BaseAction{

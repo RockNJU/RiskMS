@@ -1,13 +1,13 @@
-package com.rms.businessImpl;
+package businessImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.rms.business.RiskItemBusiness;
-import com.rms.dao.RiskItemDao;
-import com.rms.model.RiskItem;
+import business.RiskItemBusiness;
+import dao.RiskItemDao;
+import model.RiskItem;
 
 
 public class RiskItemBusinessImpl implements RiskItemBusiness{

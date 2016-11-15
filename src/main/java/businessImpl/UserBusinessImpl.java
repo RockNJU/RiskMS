@@ -1,4 +1,4 @@
-package com.rms.businessImpl;
+package businessImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rms.business.UserBusiness;
-import com.rms.dao.UserDao;
-import com.rms.model.User;
+import business.UserBusiness;
+import dao.UserDao;
+import model.User;
 
 @Service
 public class UserBusinessImpl implements UserBusiness {

@@ -1,8 +1,8 @@
-package com.rms.dao;
+package dao;
 
 import java.util.List;
 
-import com.rms.model.User;
+import model.User;
 
 public interface UserDao {
 	

@@ -1,10 +1,10 @@
-package com.rms.business;
+package business;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.rms.model.User;
+import model.User;
 
 
 public interface UserBusiness {

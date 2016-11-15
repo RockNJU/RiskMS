@@ -1,8 +1,8 @@
-package com.rms.business;
+package business;
 
 import java.util.List;
 
-import com.rms.model.RiskItem;
+import model.RiskItem;
 
 
 
