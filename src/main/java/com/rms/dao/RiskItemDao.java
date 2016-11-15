@@ -1,8 +1,8 @@
-package dao;
+package com.rms.dao;
 
 import java.util.List;
 
-import model.RiskItem;
+import com.rms.model.RiskItem;
 
 public interface RiskItemDao {
 

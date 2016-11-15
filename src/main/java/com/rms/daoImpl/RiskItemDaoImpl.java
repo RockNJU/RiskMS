@@ -1,4 +1,4 @@
-package daoImpl;
+package com.rms.daoImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dao.BaseDao;
-import dao.RiskItemDao;
-import model.RiskItem;
-import model.User;
+import com.rms.dao.BaseDao;
+import com.rms.dao.RiskItemDao;
+import com.rms.model.RiskItem;
+import com.rms.model.User;
 
 public class RiskItemDaoImpl implements RiskItemDao{
 

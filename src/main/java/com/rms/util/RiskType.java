@@ -1,4 +1,4 @@
-package util;
+package com.rms.util;
 
 public enum RiskType {
 

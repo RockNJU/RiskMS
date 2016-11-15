@@ -1,4 +1,4 @@
-package action;
+package com.rms.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import business.RiskItemBusiness;
-import business.UserBusiness;
-import model.RiskItem;
-import model.User;
+import com.rms.business.RiskItemBusiness;
+import com.rms.business.UserBusiness;
+import com.rms.model.RiskItem;
+import com.rms.model.User;
 
 @Repository
 public class RiskItemAction extends BaseAction{
