@@ -13,5 +13,5 @@ public interface RiskItemBusiness {
 	
 	public List<RiskItem> getAllRiskItem();
 	
-	public List<RiskItem> getMyRiskItem(Long userid);
+	public List<RiskItem> getMyRiskItem(int userid);
 }

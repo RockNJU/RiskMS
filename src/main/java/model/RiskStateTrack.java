@@ -11,20 +11,14 @@ import javax.persistence.Table;
 public class RiskStateTrack {
 	
 	@Id
-	private Long riskStateTrack_id;
-	private Long riskItemId;
+	private int riskStateTrack_id;
+	private int riskItemId;
 	private int state;
 	private String content;
 	private Date createTime;
-	private Long previousStateId;
+	private int previousStateId;
 	
 	
-	public Long getRiskStateTrack_id() {
-		return riskStateTrack_id;
-	}
-	public void setRiskStateTrack_id(Long riskStateTrack_id) {
-		this.riskStateTrack_id = riskStateTrack_id;
-	}
 	
 	public int getState() {
 		return state;
@@ -44,18 +38,26 @@ public class RiskStateTrack {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	public Long getRiskItemId() {
+	
+	public int getRiskStateTrack_id() {
+		return riskStateTrack_id;
+	}
+	public void setRiskStateTrack_id(int riskStateTrack_id) {
+		this.riskStateTrack_id = riskStateTrack_id;
+	}
+	public int getRiskItemId() {
 		return riskItemId;
 	}
-	public void setRiskItemId(Long riskItemId) {
+	public void setRiskItemId(int riskItemId) {
 		this.riskItemId = riskItemId;
 	}
-	public Long getPreviousStateId() {
+	public int getPreviousStateId() {
 		return previousStateId;
 	}
-	public void setPreviousStateId(Long previousStateId) {
+	public void setPreviousStateId(int previousStateId) {
 		this.previousStateId = previousStateId;
 	}
+	
 	
 	
 }

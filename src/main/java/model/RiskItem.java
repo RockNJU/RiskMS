@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class RiskItem {
 	
 	@Id
-	private Long riskItem_id;
+	private int riskItem_id;
 	private String content;
 	private int probability;
 	private int effects;
@@ -19,10 +19,11 @@ public class RiskItem {
 	private int submitter;
 	private String tracker;
 	
-	public Long getRiskItem_id() {
+	
+	public int getRiskItem_id() {
 		return riskItem_id;
 	}
-	public void setRiskItem_id(Long riskItem_id) {
+	public void setRiskItem_id(int riskItem_id) {
 		this.riskItem_id = riskItem_id;
 	}
 	public String getContent() {

@@ -20,7 +20,7 @@ public class RiskStateTrackBusinessImpl implements RiskStateTrackBusiness{
 	}
 
 	@Override
-	public List<RiskStateTrack> getOneRiskAllStates(Long riskItemId) {
+	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId) {
 		
 		return rDao.getOneRiskAllStates(riskItemId);
 	}

@@ -16,7 +16,7 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 	private BaseDao baseDao;
 	
 	@Override
-	public List<RiskStateTrack> getOneRiskAllStates(Long riskItemId) {
+	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId) {
 		try {
 			Session session = baseDao.getNewSession();
 			String hql = "from model.RiskStateTrack as r where r.riskItemId = '"+riskItemId+"'";

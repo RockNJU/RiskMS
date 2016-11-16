@@ -42,7 +42,7 @@ public class UserBusinessImpl implements UserBusiness {
 	}
 
 	@Override
-	public List<User> getOptionalTrackers(Long userid) {
+	public List<User> getOptionalTrackers(int userid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

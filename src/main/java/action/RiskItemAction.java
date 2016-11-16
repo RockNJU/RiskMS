@@ -57,7 +57,7 @@ public class RiskItemAction extends BaseAction{
 	
 	//增加风险条目
 	public String addRiskItem(RiskItem temp){
-		Long id=(long) (riskItemBusiness.getAllRiskItem().size()+2);	
+		int id= (riskItemBusiness.getAllRiskItem().size()+2);	
 		temp.setRiskItem_id(id);	
 		return riskItemBusiness.addRiskItem(temp);
 		

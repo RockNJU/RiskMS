@@ -8,7 +8,8 @@ public interface UserDao {
 	
 	public String save(User user);
 	public User findByName(String name);
-	public User getById(Long user_id);
+	public User getById(int user_id);
 	public List<User> getAll();
+	
 
 }

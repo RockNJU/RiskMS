@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao{
 	
 
 	@Override
-	public User getById(Long user_id) {
+	public User getById(int user_id) {
 		try {
 			Session session = baseDao.getNewSession();
 			User mem=(User) session.get(User.class, user_id);

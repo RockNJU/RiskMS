@@ -27,7 +27,7 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 	}
 
 	@Override
-	public List<RiskItem> getMyRiskItem(Long userid) {
+	public List<RiskItem> getMyRiskItem(int userid) {
 		List<RiskItem> temp=riskItemDao.getAll();
 		List<RiskItem> re=new ArrayList<RiskItem>();
 		re=null;

@@ -6,7 +6,7 @@ import model.RiskStateTrack;
 
 public interface RiskStateTrackDao {
 
-	public List<RiskStateTrack> getOneRiskAllStates(Long riskItemId);
+	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId);
 	
 	public String save(RiskStateTrack riskStateTrack);
 	

@@ -8,5 +8,7 @@ public interface RiskStateTrackBusiness {
 	
 	public String save(RiskStateTrack r);
 	
-	public List<RiskStateTrack> getOneRiskAllStates(Long riskItemId);
+	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId);
+
+	
 }

@@ -59,7 +59,7 @@ public class RiskStateTrackAction extends BaseAction{
 	}
 
 	//获得当前风险条目的所有状态信息列表
-	public List<RiskStateTrack> getOneRiskAllStates(Long riskItemId){
+	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId){
 		return riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
 	}
 	
