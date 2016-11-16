@@ -6,12 +6,14 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import dao.BaseDao;
 import dao.RiskItemDao;
 import model.RiskItem;
 import model.User;
 
+@Repository
 public class RiskItemDaoImpl implements RiskItemDao{
 
 	@Autowired

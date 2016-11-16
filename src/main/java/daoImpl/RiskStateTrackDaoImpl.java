@@ -5,12 +5,14 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import dao.BaseDao;
 import dao.RiskStateTrackDao;
 import model.RiskStateTrack;
 import model.User;
 
+@Repository
 public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 	@Autowired
 	private BaseDao baseDao;

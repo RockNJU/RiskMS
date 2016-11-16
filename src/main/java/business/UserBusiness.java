@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Service;
+
 import model.User;
 
-
+@Service
 public interface UserBusiness {
 
 	public void sentErrorMessage(String message, HttpServletRequest req);

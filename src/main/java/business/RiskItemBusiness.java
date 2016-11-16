@@ -2,10 +2,12 @@ package business;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import model.RiskItem;
 
 
-
+@Service
 public interface RiskItemBusiness {
 	
 	

@@ -52,6 +52,9 @@
 	</bean>	
 	
 	<bean id="riskItemAction" class="action.RiskItemAction">
+	</bean>
+	
+	<bean id="riskStateTrackAction" class="action.RiskStateTrackAction">
 	</bean>	
 	
 	<!-- 定义 Autowired 自动注入 bean -->
@@ -59,14 +62,14 @@
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 
 	<!-- 扫描有注解的文件 base-package 包路径 -->
-	<context:component-scan base-package="action" />
-	<context:component-scan base-package="business" />
+	<context:component-scan base-package="model" />
 	<context:component-scan base-package="dao" />
+	<context:component-scan base-package="daoImpl" />
+	<context:component-scan base-package="business" />
+	
 	<context:component-scan base-package="businessImpl" />
 	
-	<context:component-scan base-package="daoImpl" />
-	<context:component-scan base-package="model" />
-	
+	<context:component-scan base-package="action" />
 	<!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>

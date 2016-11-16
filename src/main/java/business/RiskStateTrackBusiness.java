@@ -2,8 +2,10 @@ package business;
 
 import java.util.List;
 
-import model.RiskStateTrack;
+import org.springframework.stereotype.Service;
 
+import model.RiskStateTrack;
+@Service
 public interface RiskStateTrackBusiness {
 	
 	public String save(RiskStateTrack r);

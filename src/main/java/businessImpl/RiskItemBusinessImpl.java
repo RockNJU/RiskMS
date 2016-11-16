@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import business.RiskItemBusiness;
 import dao.RiskItemDao;
 import model.RiskItem;
 
 
+@Service
 public class RiskItemBusinessImpl implements RiskItemBusiness{
 	@Autowired
 	private RiskItemDao riskItemDao;
