@@ -32,11 +32,11 @@ primary key(riskItem_id)
 drop table if EXISTS riskStateTrack;
 
 create table riskStateTrack(
-riskStateTrack_id int(255) not null,//其实应该是没卵用的
+riskStateTrack_id int(255) not null,
 riskItemId int(255) not null,
 state int(10),
 content varchar(255),
-createTime date default sysdate,
+createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 previousStateId int(255),
 primary key(riskStateTrack_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

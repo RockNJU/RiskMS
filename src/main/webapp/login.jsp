@@ -21,29 +21,7 @@
 		<div class="container" style="margin-left:35%">
 			<div class="row">
 			<div class="clearfix" >
-			<!--  
-			<s:form name="loginForm" action="/admin/login" method="post">
-			<%
-			String message=null;
-			if((message=(String)request.getAttribute("message"))!=null)
-			%>
-			<p style="color:red">${message}</p>
-      			<table align="center" style="border-collapse: separate;border-spacing: 10px">
-        		<tr>
-          		<td><s:textfield name="admin.admin_name" label="姓名" required="required"/></td>
-        		</tr>
-        		<tr>
-           		<td><s:password name="admin.admin_psd" label="密码" required="required"/></td>
-       			 </tr> 
-       
-        		<tr>
-          		<td colspan="2" align="center">
-          		<s:submit value="登陆" cssClass="am-btn am-btn-block am-btn-primary"/> 
-          		</td>
-        		</tr>
-      			</table>
-    		</s:form>
-			-->
+			
 			<form action='' method='post'>
 				<div>
 					<p><strong>${info}&nbsp;</strong></p>

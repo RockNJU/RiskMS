@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ public class RiskStateTrack {
 	private int riskItemId;
 	private int state;
 	private String content;
-	private Date createTime;
+	private Timestamp createTime;
 	private int previousStateId;
 	
 	
@@ -32,13 +33,14 @@ public class RiskStateTrack {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCreateTime() {
+	
+	
+	public Timestamp getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
-	
 	public int getRiskStateTrack_id() {
 		return riskStateTrack_id;
 	}
