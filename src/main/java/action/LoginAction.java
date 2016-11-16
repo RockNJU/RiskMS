@@ -16,13 +16,6 @@ public class LoginAction extends BaseAction{
 	private User user;
 	private User user_add;
 
-	
-	public UserBusiness getUserBusiness() {
-		return userBusiness;
-	}
-	public void setUserBusiness(UserBusiness userBusiness) {
-		this.userBusiness = userBusiness;
-	}
 	public User getUser() {
 		return user;
 	}

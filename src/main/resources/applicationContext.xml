@@ -23,7 +23,7 @@
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/RiskMS?autoReconnect=true" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="weizuce" />
 	</bean>
 
 	<!-- 配置sessionFactory -->

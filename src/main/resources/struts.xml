@@ -4,227 +4,28 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<package name="struts2" namespace="/user" extends="struts-default">
-		<action name="register" class="edu.nju.dessert.action.RegisterAction">
-			<result name="input">/member/register.jsp</result>
-			<result name="success">/member/regMem.jsp</result>
-		</action>
-		<action name="login" class="edu.nju.dessert.action.LoginAction" method="memberLogin">
-			<result name="input">/member/login.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">allScd</param>
-			</result>
-		</action>
-		<action name="allScd" class="edu.nju.dessert.action.SaleAction" method="getScd">
-			<result name="input">/member/member.jsp</result>
-			<result name="success" type="chain">
-			<param name="actionName">showCredit</param>
-			</result>
-		</action>
-		
-		<action name="showCredit" class="edu.nju.dessert.action.SaleAction" method="showCredit">
-			<result name="success" type="chain">
-				<param name="actionName">saleRcd</param>
-			</result>
-		</action>
-		<action name="regInfo" class="edu.nju.dessert.action.EditMemAction" method="execute">
-			<result name="success">/member/regInfo.jsp</result>
-		</action>
-		<action name="editInfo" class="edu.nju.dessert.action.EditMemAction" method="editInfo">
-			<result name="input">/member/regInfo.jsp</result>
-			<result name="success">/member/regInfo.jsp</result>
-		</action>
-		<action name="rmMem" class="edu.nju.dessert.action.EditMemAction" method="rmMem">
-			<result name="success">/member/login.jsp</result>
-		</action>
-		<action name="saleRcd" class="edu.nju.dessert.action.SaleAction" method="saleRcd">
-			<result name="success">/member/member.jsp</result>
-		</action>
-		<action name="showSeat" class="edu.nju.dessert.action.SaleAction" method="showSeat">
-			<result name="success">/member/dessertBuy.jsp</result>
-		</action>
-		<action name="payRcd" class="edu.nju.dessert.action.PayAction" method="payRcd">
-			<result name="success">/member/pay.jsp</result>
-		</action>
-		<action name="pay" class="edu.nju.dessert.action.PayAction" >
-			<result name="input">/member/pay.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">payRcd</param>
-			</result>
-		</action>
-		<action name="buyMv" class="edu.nju.dessert.action.SaleAction" method="productBuy">
-			<result name="success" type="chain">
-				<param name="actionName">allScd</param>
-			</result>
-		</action>
-		<action name="ansQst" class="edu.nju.dessert.action.SaleAction" method="ansQst">
-			<result name="success" type="chain">
-				<param name="actionName">allScd</param>
-			</result>
-		</action>
-	</package>
-	
-	<package name="clerk" namespace="/clk" extends="struts-default">
-		<action name="login" class="edu.nju.dessert.action.LoginAction" method="clkLogin">
-			<result name="input">/clerk/login.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">judgeRole</param>
-			</result>
-		</action>
-		
-		<action name="judgeRole" class="edu.nju.dessert.action.LoginAction" method="judgeRole">
-		<result name="success" type="chain">
-				<param name="actionName">showAllSchedule</param></result>
-		<result name="input" type="chain">
-				<param name="actionName">saleScd</param></result>
-		</action>
-		<action name="showAllSchedule" class="edu.nju.dessert.action.ScheduleAction" method="allScd">
-			<result name="success">/clerk/clerk.jsp</result>
-		</action>
-		
-		<action name="saleScd" class="edu.nju.dessert.action.SaleAction" method="getScd">
-			<result name="success">/clerk/sale.jsp</result>
-		</action>
-	
-		<action name="addScd" class="edu.nju.dessert.action.ScheduleAction">
-			<result name="input">/clerk/clerk.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAllSchedule</param>
-			</result>
-		</action>
-		<action name="editScd" class="edu.nju.dessert.action.ScheduleAction" method="editScd">
-			<result name="success">/clerk/modify.jsp</result>
-		</action>
-		<action name="updateScd" class="edu.nju.dessert.action.ScheduleAction" method="updateScd">
-			<result name="input">/clerk/modify.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAllSchedule</param>
-			</result>
-		</action>
-		<action name="rmvScd" class="edu.nju.dessert.action.ScheduleAction" method="rmvScd">
-			<result name="input">/clerk/clerk.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAllSchedule</param>
-			</result>
-		</action>
-
-
-		<action name="showSeat" class="edu.nju.dessert.action.SaleAction" method="showSeat">
-			<result name="success">/clerk/dessertBuy.jsp</result>
-			<result name="input">/clerk/login.jsp</result>
-		</action>
-		<action name="mvPay" class="edu.nju.dessert.action.SaleAction" method="mvPay">
-			<result name="success" type="chain">
-				<param name="actionName">saleScd</param>
-			</result>
-		</action>
-		<action name="memInfo" class="edu.nju.dessert.action.MemInfoAction" >
-			<result name="success">/clerk/memInfo.jsp</result>
-		</action>
-		<action name="calCredit" class="edu.nju.dessert.action.SaleAction" method="calCredit">
-			<result name="success" type="chain">
-				<param name="actionName">actScd</param>
-			</result>
-		</action>
-	</package>
-	
 	
 		<package name="admin" namespace="/admin" extends="struts-default">
-		<action name="login" class="edu.nju.dessert.action.LoginAction" method="adminLogin">
-			<result name="input">/admin/login.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
+		<action name="login" class="action.LoginAction" method="userLogin">
+			<result name="INPUT">/admin/login.jsp</result>
+			<result name="SUCCESS" type="chain">
+				<param name="actionName">showAllUser</param>
 				</result>
 		</action>
 
-		<action name="showAll" class="edu.nju.dessert.action.StoreAction" method="allScd">
-			<result name="success">/admin/store.jsp</result>
+		<action name="showAllUser" class="action.LoginAction" method="getAllUser">
+			<result name="success">/admin/admin.jsp</result>
 		</action>
 	
-		<action name="addStore" class="edu.nju.dessert.action.StoreAction" method="addStore">
-			<result name="input">/admin/store.jsp</result>
+		<action name="addUser" class="action.LoginAction" method="addUser">
+			<result name="input">/admin/admin.jsp</result>
 			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
-			</result>
-		</action>
-		<action name="editStore" class="edu.nju.dessert.action.StoreAction" method="editScd">
-			<result name="success">/admin/modify.jsp</result>
-		</action>
-	
-		<action name="updateStore" class="edu.nju.dessert.action.StoreAction" method="updateScd">
-			<result name="input">/admin/modify.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
-			</result>
-		</action>
-		<action name="rmvStore" class="edu.nju.dessert.action.StoreAction" method="rmvScd">
-			<result name="input">/admin/store.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
+				<param name="actionName">showAllUser</param>
 			</result>
 		</action>
 		
-				<action name="showAllClerk" class="edu.nju.dessert.action.ClerkAction" method="allScd">
-			<result name="success">/admin/clerk.jsp</result>
-		</action>
-	
-		<action name="addClerk" class="edu.nju.dessert.action.ClerkAction" method="addScd">
-			<result name="input">/admin/clerk.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAllClerk</param>
-			</result>
-		</action>
-		<action name="editClerk" class="edu.nju.dessert.action.ClerkAction" method="editScd">
-			<result name="success">/admin/modifyClerk.jsp</result>
-		</action>
-	
-		<action name="updateClerk" class="edu.nju.dessert.action.ClerkAction" method="updateScd">
-			<result name="input">/admin/modifyClerk.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAllClerk</param>
-			</result>
-		</action>
-		<action name="rmvClerk" class="edu.nju.dessert.action.ClerkAction" method="rmvScd">
-			<result name="input">/admin/clerk.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAllClerk</param>
-			</result>
-		</action>
 	</package>
 	
-	<package name="manager" namespace="/mng" extends="struts-default">
-		<action name="login" class="edu.nju.dessert.action.LoginAction" method="mngLogin">
-			<result name="input">/manager/login.jsp</result>
-			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
-			</result>
-		</action>
-		<action name="showAll" class="edu.nju.dessert.action.ScdGrantAction" method="allScd">
-			<result name="success">/manager/manager.jsp</result>
-		</action>
-		<action name="pass" class="edu.nju.dessert.action.ScdGrantAction" method="passScd">
-			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
-			</result>
-		</action>
-		<action name="fail" class="edu.nju.dessert.action.ScdGrantAction" method="failScd">
-			<result name="success" type="chain">
-				<param name="actionName">showAll</param>
-			</result>
-		</action>
-		<action name="memStatis" class="edu.nju.dessert.action.StatisAction" method="memStatis">
-			<result name="success">/manager/memStatis.jsp</result>
-		</action>
-		<action name="saleStatis" class="edu.nju.dessert.action.StatisAction" method="saleStatis">
-			<result name="success">/manager/saleStatis.jsp</result>
-		</action>
-		<action name="mvStatis" class="edu.nju.dessert.action.StatisAction" method="mvStatis">
-			<result name="success">/manager/mvStatis.jsp</result>
-		</action>
-		<action name="payStatis" class="edu.nju.dessert.action.StatisAction" method="payStatis">
-			<result name="success">/manager/payStatis.jsp</result>
-		</action>
-
-	</package>
+	
 </struts>
 

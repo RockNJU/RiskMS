@@ -69,7 +69,13 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public List<User> getAll() {
 		// TODO Auto-generated method stub
-		return baseDao.getAllList(User.class);
+		List<User> userList = baseDao.getAllList(User.class);
+		for(int i=0;i<userList.size();i++){
+			if(userList.get(i).getRole()==0){
+				userList.remove(i);
+			}
+		}
+		return userList;
 	}
 
 
