@@ -20,6 +20,7 @@ public class RiskItemAction extends BaseAction{
 	@Autowired
 	private RiskItemBusiness riskItemBusiness;
 	private RiskItem riskItem_add;
+	private RiskItem riskItem;
 	@Autowired
 	private UserBusiness userBusiness; 
 	private User user;
@@ -73,6 +74,12 @@ public class RiskItemAction extends BaseAction{
 	}
 	
 	
+	public RiskItem getRiskItem() {
+		return riskItem;
+	}
+	public void setRiskItem(RiskItem riskItem) {
+		this.riskItem = riskItem;
+	}
 	public String[] getSelectedUserList() {
 		return selectedUserList;
 	}
@@ -98,13 +105,14 @@ public class RiskItemAction extends BaseAction{
 	
 	//增加风险条目
 	public String addRiskItem(){
-		int userId = ((User) session.get("user")).getUser_id();
-		riskItem_add.setSubmitter(userId);
+
+		riskItem_add.setSubmitter(((User) session.get("user")).getUser_id());
+		riskItem_add.setSub_name(((User) session.get("user")).getUser_name());
 		String userIdStr="";
 		for(int i=0;i<selectedUserList.length;i++){
 			userIdStr+=selectedUserList[i]+";";
 		}
-		riskItem_add.setThreshold(userIdStr);
+		riskItem_add.setTracker_id(userIdStr);
 		return riskItemBusiness.addRiskItem(riskItem_add);
 		
 	}

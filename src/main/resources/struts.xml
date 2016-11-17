@@ -46,6 +46,10 @@
 				<param name="actionName">showAllRiskItemForManager</param>
 			</result>
 		</action>
+		
+		<action name="showItemStateList" class="edu.rms.action.RiskStateTrackAction" method="getOneRiskAllStates">
+			<result name="success">/user/itemStateList.jsp</result>
+		</action>
 	</package>
 </struts>
 

@@ -1,6 +1,9 @@
 package edu.rms.action;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,7 @@ public class RiskStateTrackAction extends BaseAction{
 	@Autowired
 	private RiskStateTrackBusiness riskStateTrackBusiness;
 	private RiskStateTrack riskStateTrack;
+	private List<RiskStateTrack> itemStateList;
 	
 	
 	
@@ -57,10 +61,23 @@ public class RiskStateTrackAction extends BaseAction{
 	public void setRiskStateTrack(RiskStateTrack riskStateTrack) {
 		this.riskStateTrack = riskStateTrack;
 	}
+	
+	
+
+	public List<RiskStateTrack> getItemStateList() {
+		return itemStateList;
+	}
+
+	public void setItemStateList(List<RiskStateTrack> itemStateList) {
+		this.itemStateList = itemStateList;
+	}
 
 	//获得当前风险条目的所有状态信息列�?
-	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId){
-		return riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
+	public void getOneRiskAllStates(int riskItemId) throws ServletException,IOException{
+		int idno=Integer.parseInt(req.getParameter("id"));
+		
+		session.put("riskItem_id", idno);
+		itemStateList = riskStateTrackBusiness.getOneRiskAllStates(idno);
 	}
 	
 	//新增

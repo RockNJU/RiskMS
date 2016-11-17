@@ -121,6 +121,7 @@
       <th style="background: #C2F1E2">触发器/阙值</th>
       <th style="background: #C2F1E2">提交者</th>
       <th style="background: #C2F1E2">跟踪者</th>
+      <th style="background: #C2F1E2">查看风险状态</th>
       </tr>
       
            <s:iterator id="s" value="riskItemList" status="scdsStatus">
@@ -129,16 +130,32 @@
        <td><s:property value="content"/></td>
        <td>
        <s:if test="probability==1">高</s:if>
-       <s:else if test="probability==2">中</s:else>
-       <s:else if test="probability==3">低</s:else>
+       <s:elseif test="probability==2">中</s:elseif>
+       <s:elseif test="probability==3">低</s:elseif>
        </td>
        <td>
        <s:if test="probability==1">高</s:if>
-       <s:else if test="probability==2">中</s:else>
-       <s:else if test="probability==3">低</s:else>
+       <s:elseif test="probability==2">中</s:elseif>
+       <s:elseif test="probability==3">低</s:elseif>
        </td>
        <td><s:property value="threshold"/></td>
-       <td><s:property value="submitter"/></td>
+       <td><s:property value="sub_name"/></td>
+       <td><s:property value="tracker_name"/></td>
+       
+       <s:set var="riskItem" value="#s" scope="session"></s:set>
+		  <td>
+		  
+		  <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <s:url action="showItemStateList" var="p">
+			    <s:param name="id"><s:property value="riskItem_id"/></s:param>
+			</s:url>
+                    <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>查看</s:a>
+         
+                  </div>
+                </div>
+		  
+		   </td>
       
      </tr>
      </s:iterator>
