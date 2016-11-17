@@ -8,22 +8,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.rms.dao.BaseDao;
-import edu.rms.dao.RiskStateTrackDao;
+import edu.rms.dao.RaItemsDao;
+import edu.rms.model.RaItems;
 import edu.rms.model.RiskStateTrack;
-import edu.rms.model.User;
+
 
 @Repository
-public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
+public class RaItemsDaoImpl implements RaItemsDao{
+	
+	
 	@Autowired
 	private BaseDao baseDao;
 	
 	@Override
-	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId) {
+	public List<RaItems> getOneRAItems(int raid) {
+		
 		try {
 			Session session = baseDao.getNewSession();
-			String hql = "from edu.rms.model.RiskStateTrack as r where r.riskItemId = '"+riskItemId+"'";
+			String hql = "from edu.rms.model.raList as r where r.ra_id = '"+raid+"'";
 			Query query=session.createQuery(hql);
-			List<RiskStateTrack> ms=query.list();
+			List<RaItems> ms=query.list();
 			session.flush();
 			session.clear();
 			session.close();
@@ -33,17 +37,17 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
 
 	@Override
-	public String save(RiskStateTrack riskStateTrack) {
+	public String save(RaItems ra) {
+		
 		try {
-			baseDao.save(riskStateTrack);
-			return "新增风险状�?�成�?";
+			baseDao.save(ra);
+			return "SUCCESS";
 		}catch (Exception e) {			
 			e.printStackTrace();
-			return "风险状�?�新增失�?";
+			return "FALSE";
 		}
 	}
 

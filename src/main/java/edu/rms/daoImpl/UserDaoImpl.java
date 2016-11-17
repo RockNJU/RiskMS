@@ -36,12 +36,14 @@ public class UserDaoImpl implements UserDao{
 	{
 		try {
 			Session session = baseDao.getNewSession();
-			String hql = "from model.User as u where u.user_name = '"+value+"'";
+			System.out.println("adasdas");
+			String hql = "from edu.rms.model.User as u where u.user_name = '"+value+"'";
 			Query query=session.createQuery(hql);
 			List<User> ms=query.list();
 			session.flush();
 			session.clear();
 			session.close();
+			
 			if(ms.isEmpty())return null;
 			return ms.get(0);
 		} catch (Exception e) {

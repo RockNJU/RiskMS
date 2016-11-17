@@ -7,4 +7,7 @@ import edu.rms.model.RaList;
 public interface RaListDao {
 	
 	public List<RaList> getAll();
+	
+	public String save(RaList ra);
+	
 }
