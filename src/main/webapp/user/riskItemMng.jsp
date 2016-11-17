@@ -24,11 +24,11 @@
 		
 		<header>
 			<div class="container">
-				<div class="row">
+				
 						<div class="col-xs-12  copyright text-center">
 							<h1>软件风险管理系统<br>Risk Management System</h1>
 						</div>
-				</div>
+				
 			</div>
 		</header>
 
@@ -76,7 +76,7 @@
  		<div class="am-g">
       <div class="am-u-sm-12">
 
-	<s:form action="/user/addRiskItem" method="post" cssClass="am-form">
+	<s:form action="/admin/addRiskItem" method="post" cssClass="am-form">
 	<%
 	String message=null;
 	if((message=(String)request.getAttribute("message"))!=null)
@@ -88,19 +88,16 @@
           <td><s:select name="riskItem_add.probability" list="#{'1':'高', '2':'中', '3':'低'}" label="可能性" required="required"/></td>
           <td><s:select name="riskItem_add.effects" list="#{'1':'高', '2':'中', '3':'低'}" label="影响程度" required="required"/></td>
           <td><s:textfield name="riskItem_add.threshold" label="触发器/阙值" required="required"/></td>
-          
-        </tr>
-        <tr>
-            <td><s:select multiply="true" name="selectedUserList" list="%{optionalUserList}" listKey="user_id" listValue="user_name" label="跟踪者" required="required"/></td>
              
-        </tr> 
-        
+        </tr>
+       <s:checkboxlist name="selectedUserList" list="optionalUserList" listKey="user_id" listValue="user_name" label="跟踪者" required="required"/>
          <tr>
           <td align="center">
           <s:submit value="添加" cssClass="am-btn am-btn-block am-btn-primary"/> <s:reset value="重置" cssClass="am-btn am-btn-block am-btn-success"/>
           </td>
         </tr>
       </table>
+       
     </s:form>
 			
       </div>

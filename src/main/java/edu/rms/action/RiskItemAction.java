@@ -89,6 +89,7 @@ public class RiskItemAction extends BaseAction{
 	//获得�?有风险条�?
 	public String getAllRiskItem(){	
 		riskItemList =  riskItemBusiness.getAllRiskItem();	
+		getOptionalTrackers();
 		return SUCCESS;
 	}
 	
@@ -100,8 +101,8 @@ public class RiskItemAction extends BaseAction{
 	
 	//获得可�?�的跟踪�?
 	public void getOptionalTrackers(){
-		User current=(User) session.get("user");
 		optionalUserList = userBusiness.getOptionalTrackers();
+		
 	}
 	
 	//增加风险条目
@@ -114,7 +115,11 @@ public class RiskItemAction extends BaseAction{
 			userIdStr+=selectedUserList[i]+";";
 		}
 		riskItem_add.setTracker_id(userIdStr);
-		return riskItemBusiness.addRiskItem(riskItem_add);
+		String result = riskItemBusiness.addRiskItem(riskItem_add);
+		if(result!=null){
+			return SUCCESS;
+		}
+		return INPUT;
 		
 	}
 }
