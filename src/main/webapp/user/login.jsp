@@ -36,7 +36,7 @@
 		<div class="row">
 			<div class="clearfix" >
 			
-	<s:form name="loginForm" action="/user/loginMD" method="post">
+	<s:form name="loginForm" action="/admin/login" method="post">
 	<%
 	String message=null;
 	if((message=(String)request.getAttribute("message"))!=null)

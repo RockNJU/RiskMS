@@ -12,8 +12,11 @@ import org.springframework.stereotype.Repository;
 import edu.rms.business.UserBusiness;
 import edu.rms.model.User;
 
+@Repository
 @Component
+
 public class LoginAction extends BaseAction{
+
 	@Autowired
 	private UserBusiness userBusiness; 
 	private User user;
@@ -56,12 +59,18 @@ public class LoginAction extends BaseAction{
 					return "manager";
 				}else if(usr.getRole()==2){
 					return "developer";
+				}else if(usr.getRole()==0){
+					return "admin";
 				}
 				return SUCCESS;
 			}else{
 				message+="密码错误<br>";
 				userBusiness.sentErrorMessage(message, req);
-				return INPUT;
+				if(usr.getRole()==0){
+					return "input-admin";
+				}else {
+					return "input-user";
+				}
 			}
 		}else{
 			message+="用户不存在<br>";
