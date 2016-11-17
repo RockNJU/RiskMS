@@ -26,7 +26,7 @@
 	
 	
 		<package name="user" namespace="/user" extends="struts-default">
-		<action name="login" class="edu.rms.action.LoginAction" method="userLogin">
+		<action name="loginMD" class="edu.rms.action.LoginAction" method="userLogin">
 			<result name="input">/user/login.jsp</result>
 			<result name="manager" type="chain">
 				<param name="actionName">showAllRiskItemForManager</param>
@@ -37,7 +37,7 @@
 		</action>
 
 		<action name="showAllRiskItemForManager" class="edu.rms.action.RiskItemAction" method="getAllRiskItem">
-			<result name="success">/user/riskItemMng.jsp</result>
+			<result>/user/riskItemMng.jsp</result>
 		</action>
 	
 		<action name="addRiskItem" class="edu.rms.action.RiskItemAction" method="addRiskItem">
