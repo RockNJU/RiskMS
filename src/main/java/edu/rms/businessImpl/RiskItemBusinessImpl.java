@@ -16,6 +16,7 @@ import edu.rms.model.RiskItem;
 public class RiskItemBusinessImpl implements RiskItemBusiness{
 	@Autowired
 	private RiskItemDao riskItemDao;
+	@Autowired
 	private UserDao udao;
 	
 	@Override
