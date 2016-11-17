@@ -1,3 +1,4 @@
+
 drop database if EXISTS riskms;
 create database riskms;
 use database riskms;
@@ -40,3 +41,21 @@ createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 previousStateId int(255),
 primary key(riskStateTrack_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+drop table if EXISTS raList;
+
+create table raList(
+ra_id int(255),
+ra_name varchar(255),
+createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+primary key(ra_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table if EXISTS raItems;
+create table raItems(
+ra_id int(255),
+riskItem_id int(255)
+)DEFAULT CHARSET=utf8;
+
