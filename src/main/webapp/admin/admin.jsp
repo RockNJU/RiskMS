@@ -116,14 +116,14 @@
       <th style="background: #C2F1E2">用户类型</th>
       </tr>
       
-           <s:iterator id="s" value="scds" status="scdsStatus">
+           <s:iterator id="s" value="userList" status="scdsStatus">
      <tr>
        <td><s:property value="user_id"/></td>
        <td><s:property value="user_name"/></td>
        <td><s:property value="user_psd"/></td>
        <td>
        <s:if test="role==1">项目经理</s:if>
-       <s:else>项目经理</s:else>
+       <s:else>开发人员</s:else>
        </td>
       
      </tr>
