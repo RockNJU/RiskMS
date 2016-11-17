@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="riskItem")
+@Table(name="riskitem")
 public class RiskItem {
 	
 	@Id
@@ -13,7 +13,7 @@ public class RiskItem {
 	private String content;
 	private int probability;
 	private int effects;
-	private String triggers;
+	private String threshold;
 
 	private int submitter;
 	private String tracker;
@@ -45,11 +45,12 @@ public class RiskItem {
 	public void setEffects(int effects) {
 		this.effects = effects;
 	}
-	public String getTriggers() {
-		return triggers;
+
+	public String getThreshold() {
+		return threshold;
 	}
-	public void setTriggers(String triggers) {
-		this.triggers = triggers;
+	public void setThreshold(String threshold) {
+		this.threshold = threshold;
 	}
 	public int getSubmitter() {
 		return submitter;

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="riskStateTrack")
+@Table(name="riskstatetrack")
 public class RiskStateTrack {
 	
 	@Id

@@ -13,25 +13,23 @@ primary key(user_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-drop table if EXISTS riskItem;
+drop table if EXISTS riskitem;
 
-create table riskItem(
+create table riskitem(
 riskItem_id int(255) not null,
 content varchar(255),
 probability int(10),
 effects int(10),
-triggers varchar(255),
-recogtime int(255),
-problemtime int(255),
+threshold varchar(255),
 submitter int(255),
 tracker varchar(255),
 primary key(riskItem_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-drop table if EXISTS riskStateTrack;
+drop table if EXISTS riskstatetrack;
 
-create table riskStateTrack(
+create table riskstatetrack(
 riskStateTrack_id int(255) not null,
 riskItemId int(255) not null,
 state int(10),
@@ -43,17 +41,17 @@ primary key(riskStateTrack_id)
 
 
 
-drop table if EXISTS raList;
+drop table if EXISTS ralist;
 
-create table raList(
+create table ralist(
 ra_id int(255),
 ra_name varchar(255),
 createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 primary key(ra_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-drop table if EXISTS raItems;
-create table raItems(
+drop table if EXISTS raitems;
+create table raitems(
 raItems_id int(255),
 ra_id int(255),
 riskItem_id int(255),

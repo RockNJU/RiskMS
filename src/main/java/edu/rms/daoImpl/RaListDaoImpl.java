@@ -27,6 +27,8 @@ public class RaListDaoImpl implements RaListDao {
 	public String save(RaList ra) {
 		
 		try {
+			int size=baseDao.getAllList(RaList.class).size();
+			ra.setRa_id(size+1);
 			baseDao.save(ra);
 			return "新增计划成功";
 		}catch (Exception e) {			

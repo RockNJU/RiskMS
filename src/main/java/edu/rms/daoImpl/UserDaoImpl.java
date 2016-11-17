@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.rms.dao.BaseDao;
 import edu.rms.dao.UserDao;
+import edu.rms.model.RaList;
 import edu.rms.model.User;
 
 @Repository
@@ -23,6 +24,8 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public String save(User user) {
 		try {
+			int size=baseDao.getAllList(User.class).size();
+		    user.setUser_id(size+1);
 			baseDao.save(user);
 			return "新增用户成功";
 		}catch (Exception e) {			
@@ -36,7 +39,6 @@ public class UserDaoImpl implements UserDao{
 	{
 		try {
 			Session session = baseDao.getNewSession();
-			System.out.println("adasdas");
 			String hql = "from edu.rms.model.User as u where u.user_name = '"+value+"'";
 			Query query=session.createQuery(hql);
 			List<User> ms=query.list();

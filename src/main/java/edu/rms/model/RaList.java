@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="raList")
+@Table(name="ralist")
 public class RaList {
 	
 	@Id

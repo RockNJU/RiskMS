@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.rms.dao.BaseDao;
 import edu.rms.dao.RiskItemDao;
+import edu.rms.model.RaItems;
 import edu.rms.model.RiskItem;
 import edu.rms.model.User;
 
@@ -35,6 +36,26 @@ public class RiskItemDaoImpl implements RiskItemDao{
 		}catch (Exception e) {			
 			e.printStackTrace();
 			return "风险条目新增失败";
+		}
+	}
+
+
+
+	@Override
+	public List<RiskItem> findbykey(String key) {
+		try {
+			Session session = baseDao.getNewSession();
+			String hql = "from edu.rms.model.RiskItem as r where r.ra_id = '"+key+"'";
+			Query query=session.createQuery(hql);
+			List<RiskItem> ms=query.list();
+			session.flush();
+			session.clear();
+			session.close();
+			if(ms.isEmpty())return null;
+			return ms;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

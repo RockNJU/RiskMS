@@ -10,4 +10,5 @@ public interface RiskItemDao {
 	
 	public String save(RiskItem riskItem);
 	
+	public List<RiskItem> findbykey(String key);
 }

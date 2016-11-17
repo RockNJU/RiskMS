@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.rms.dao.BaseDao;
 import edu.rms.dao.RiskStateTrackDao;
+import edu.rms.model.RaList;
 import edu.rms.model.RiskStateTrack;
 import edu.rms.model.User;
 
@@ -39,11 +40,13 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 	@Override
 	public String save(RiskStateTrack riskStateTrack) {
 		try {
+			int size=baseDao.getAllList(RiskStateTrack.class).size();
+			riskStateTrack.setRiskStateTrack_id(size+1);;
 			baseDao.save(riskStateTrack);
-			return "新增风险状�?�成�?";
+			return "新增成功";
 		}catch (Exception e) {			
 			e.printStackTrace();
-			return "风险状�?�新增失�?";
+			return "新增失败";
 		}
 	}
 
