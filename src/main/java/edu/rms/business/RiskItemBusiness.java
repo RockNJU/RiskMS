@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import edu.rms.model.RiskItem;
 
 
-@Service
 public interface RiskItemBusiness {
 	
 	

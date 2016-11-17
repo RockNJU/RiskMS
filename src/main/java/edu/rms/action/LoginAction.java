@@ -1,6 +1,7 @@
 package edu.rms.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 
@@ -16,6 +17,7 @@ public class LoginAction extends BaseAction{
 	private UserBusiness userBusiness; 
 	private User user;
 	private User user_add;
+	private List<User> userList;
 
 	public User getUser() {
 		return user;
@@ -32,9 +34,17 @@ public class LoginAction extends BaseAction{
 		this.user_add = user_add;
 	}
 	
+	
+	
+	public List<User> getUserList() {
+		return userList;
+	}
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
 	public String userLogin() throws ServletException,IOException{
 		String message="";
-		//获取name�?对应的user对象
+		//获取name所对应的user对象
 		User usr = userBusiness.loginUser(user.getUser_name());
 		if(usr!=null){
 			if(usr.getUser_psd().equals(user.getUser_psd())){
@@ -46,7 +56,7 @@ public class LoginAction extends BaseAction{
 				return INPUT;
 			}
 		}else{
-			message+="用户不存�?<br>";
+			message+="用户不存在<br>";
 			userBusiness.sentErrorMessage(message, req);
 			return INPUT;
 		}
@@ -57,5 +67,12 @@ public class LoginAction extends BaseAction{
 		return userBusiness.addUser(user_add);
 	}	
 	
+	
+	public String getAllUser(){
+		
+		userList = userBusiness.getAllUser();
+		return SUCCESS;
+		
+	}
 	
 }
