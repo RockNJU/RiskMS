@@ -38,6 +38,7 @@ public class UserDaoImpl implements UserDao{
 	public User findByName(String value)
 	{
 		try {
+			System.out.println(value+"  !!!!!!!!!!!!!!!!!!!!!!");
 			Session session = baseDao.getNewSession();
 			String hql = "from edu.rms.model.User as u where u.user_name = '"+value+"'";
 			Query query=session.createQuery(hql);

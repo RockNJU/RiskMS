@@ -87,8 +87,9 @@ public class RiskItemAction extends BaseAction{
 		this.selectedUserList = selectedUserList;
 	}
 	//获得�?有风险条�?
-	public void getAllRiskItem(){	
+	public String getAllRiskItem(){	
 		riskItemList =  riskItemBusiness.getAllRiskItem();	
+		return SUCCESS;
 	}
 	
 	//获得当前登录人员可参与的风险条目

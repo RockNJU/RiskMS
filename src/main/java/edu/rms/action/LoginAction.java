@@ -50,11 +50,11 @@ public class LoginAction extends BaseAction{
 		String message="";
 		//获取name所对应的user对象
 		User usr = userBusiness.loginUser(user.getUser_name());
-		System.out.println("userrole   "+usr.getRole());
+		//System.out.println("userrole   "+usr.getRole());
 		if(usr!=null){
 			if(usr.getUser_psd().equals(user.getUser_psd())){
 				session.put("user", usr);
-				
+				System.out.println("userrole   "+usr.getRole());
 				if(usr.getRole()==1){
 					return "manager";
 				}else if(usr.getRole()==2){
