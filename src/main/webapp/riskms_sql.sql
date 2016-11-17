@@ -1,4 +1,3 @@
-
 drop database if EXISTS riskms;
 create database riskms;
 use database riskms;
@@ -55,7 +54,8 @@ primary key(ra_id)
 
 drop table if EXISTS raItems;
 create table raItems(
+raItems_id int(255),
 ra_id int(255),
-riskItem_id int(255)
-)DEFAULT CHARSET=utf8;
-
+riskItem_id int(255),
+primary key(raItems_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
