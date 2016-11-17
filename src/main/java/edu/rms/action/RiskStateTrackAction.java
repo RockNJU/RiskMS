@@ -3,6 +3,7 @@ package edu.rms.action;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import edu.rms.business.RiskItemBusiness;
@@ -11,7 +12,7 @@ import edu.rms.model.RiskItem;
 import edu.rms.model.RiskStateTrack;
 
 
-@Repository
+@Component
 public class RiskStateTrackAction extends BaseAction{
 	
 	@Autowired
@@ -57,7 +58,7 @@ public class RiskStateTrackAction extends BaseAction{
 		this.riskStateTrack = riskStateTrack;
 	}
 
-	//获得当前风险条目的所有状态信息列�?
+	//获得当前风险条目的所有状态信息列�?
 	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId){
 		return riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
 	}

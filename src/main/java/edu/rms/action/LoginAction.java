@@ -6,12 +6,13 @@ import java.util.List;
 import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import edu.rms.business.UserBusiness;
 import edu.rms.model.User;
 
-@Repository
+@Component
 public class LoginAction extends BaseAction{
 	@Autowired
 	private UserBusiness userBusiness; 

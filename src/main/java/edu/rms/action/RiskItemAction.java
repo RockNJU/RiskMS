@@ -14,7 +14,7 @@ import edu.rms.business.UserBusiness;
 import edu.rms.model.RiskItem;
 import edu.rms.model.User;
 
-@Repository
+@Component
 public class RiskItemAction extends BaseAction{
 	@Autowired
 	private RiskItemBusiness riskItemBusiness;
@@ -38,7 +38,7 @@ public class RiskItemAction extends BaseAction{
 	
 	
 	
-	//获得�?有风险条�?
+	//获得�?有风险条�?
 	public List<RiskItem> getAllRiskItem(){	
 		return riskItemBusiness.getAllRiskItem();	
 	}
@@ -49,7 +49,7 @@ public class RiskItemAction extends BaseAction{
 		return riskItemBusiness.getMyRiskItem(current.getUser_id());
 	}
 	
-	//获得可�?�的跟踪�?
+	//获得可�?�的跟踪�?
 	public List<User> getOptionalTrackers(){
 		User current=(User) session.get("user");
 		return userBusiness.getOptionalTrackers(current.getUser_id());

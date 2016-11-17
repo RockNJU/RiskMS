@@ -1,12 +1,14 @@
 package edu.rms.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="raItems")
 public class RaItems {
-
+	
+	@Id
 	private int ra_id;
 	private int riskItem_id;
 	public int getRa_id() {
