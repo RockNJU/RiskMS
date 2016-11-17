@@ -37,7 +37,7 @@
 	<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
-        <li><a href="../admin/showAllUser"><span class="am-icon-home"></span> 用户管理</a></li>
+        <li><a href="../admin/showAllUser"><span class="am-icon-home"></span> 风险条目管理</a></li>
          <li><a href="../index.jsp"><span class="am-icon-calendar"></span> 注销</a></li>
         
       </ul>
@@ -45,7 +45,7 @@
       <div class="am-panel am-panel-default admin-sidebar-panel">
         <div class="am-panel-bd">
           <p><span class="am-icon-bookmark"></span> 公告</p>
-          <p>您只有添加系统用户的权限</p>
+          <p>风险管理计划RA即将推出</p>
         </div>
       </div>
 
@@ -62,13 +62,13 @@
   <!-- content start -->
   <div class="admin-content">		
 	<div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理</strong> <small></small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">风险条目管理</strong> <small></small></div>
     </div>
     
 <div class="am-tabs am-margin" data-am-tabs>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="#tab1">添加用户</a></li>
-      <li><a href="#tab2">所有用户</a></li>
+      <li class="am-active"><a href="#tab1">添加风险条目</a></li>
+      <li><a href="#tab2">所有风险条目</a></li>
     </ul>
     
      <div class="am-tabs-bd">
@@ -76,7 +76,7 @@
  		<div class="am-g">
       <div class="am-u-sm-12">
 
-	<s:form action="/admin/addUser" method="post" cssClass="am-form">
+	<s:form action="/user/addRiskItem" method="post" cssClass="am-form">
 	<%
 	String message=null;
 	if((message=(String)request.getAttribute("message"))!=null)
@@ -84,11 +84,14 @@
 	<p style="color:red">${message}</p>
       <table align="center" style="border-collapse: separate;border-spacing: 10px">
          <tr>
-          <td><s:textfield name="user_add.user_name" label="用户名称" required="required"/></td>
-          <td><s:textfield name="user_add.user_psd" label="登录密码" required="required"/></td>
+          <td><s:textfield name="riskItem_add.content" label="风险内容" required="required"/></td>
+          <td><s:select name="riskItem_add.probability" list="#{'1':'高', '2':'中', '3':'低'}" label="可能性" required="required"/></td>
+          <td><s:select name="riskItem_add.effects" list="#{'1':'高', '2':'中', '3':'低'}" label="影响程度" required="required"/></td>
+          <td><s:textfield name="riskItem_add.threshold" label="触发器/阙值" required="required"/></td>
+          
         </tr>
         <tr>
-            <td><s:select name="user_add.role" list="#{'1':'项目经理', '2':'开发人员'}" label="用户类型" required="required"/></td>
+            <td><s:select multiply="true" name="selectedUserList" list="%{optionalUserList}" listKey="user_id" listValue="user_name" label="跟踪者" required="required"/></td>
              
         </tr> 
         
@@ -111,21 +114,31 @@
       
        <table class="am-table am-table-striped am-table-hover table-main">
       <tr>
-      <th style="background: #C2F1E2">用户编号</th>
-      <th style="background: #C2F1E2">用户姓名</th>
-      <th style="background: #C2F1E2">登录密码</th>
-      <th style="background: #C2F1E2">用户类型</th>
+      <th style="background: #C2F1E2">风险条目编号</th>
+      <th style="background: #C2F1E2">风险内容</th>
+      <th style="background: #C2F1E2">可能性</th>
+      <th style="background: #C2F1E2">影响程度</th>
+      <th style="background: #C2F1E2">触发器/阙值</th>
+      <th style="background: #C2F1E2">提交者</th>
+      <th style="background: #C2F1E2">跟踪者</th>
       </tr>
       
-           <s:iterator id="s" value="userList" status="scdsStatus">
+           <s:iterator id="s" value="riskItemList" status="scdsStatus">
      <tr>
-       <td><s:property value="user_id"/></td>
-       <td><s:property value="user_name"/></td>
-       <td><s:property value="user_psd"/></td>
+       <td><s:property value="riskItem_id"/></td>
+       <td><s:property value="content"/></td>
        <td>
-       <s:if test="role==1">项目经理</s:if>
-       <s:else>开发人员</s:else>
+       <s:if test="probability==1">高</s:if>
+       <s:else if test="probability==2">中</s:else>
+       <s:else if test="probability==3">低</s:else>
        </td>
+       <td>
+       <s:if test="probability==1">高</s:if>
+       <s:else if test="probability==2">中</s:else>
+       <s:else if test="probability==3">低</s:else>
+       </td>
+       <td><s:property value="threshold"/></td>
+       <td><s:property value="submitter"/></td>
       
      </tr>
      </s:iterator>

@@ -50,6 +50,12 @@ public class LoginAction extends BaseAction{
 		if(usr!=null){
 			if(usr.getUser_psd().equals(user.getUser_psd())){
 				session.put("user", usr);
+				
+				if(usr.getRole()==1){
+					return "manager";
+				}else if(usr.getRole()==2){
+					return "developer";
+				}
 				return SUCCESS;
 			}else{
 				message+="密码错误<br>";
@@ -65,7 +71,11 @@ public class LoginAction extends BaseAction{
 	
 	
 	public String addUser(){
-		return userBusiness.addUser(user_add);
+		if(userBusiness.addUser(user_add).equals("新增用户成功")){
+			return SUCCESS;
+		}
+		return INPUT;
+		
 	}	
 	
 	

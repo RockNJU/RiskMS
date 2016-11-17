@@ -28,8 +28,8 @@
 					<div class="col-xs-2 col-sm-6 col-md-8">
 						
 						<nav class="desktop-menu hidden-xs hidden-sm">
-							<a href="../admin/login.jsp">管理员入口</a>
-							<a href="../user/login.jsp">经理及开发者入口</a>
+							<a href="admin/login.jsp">管理员入口</a>
+							<a href="user/login.jsp">经理及开发者入口</a>
 						</nav>
 					
 					</div>
@@ -42,13 +42,10 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-7">
 				<div class="catch-phrase">
-					<h1>软件开发风险管理系统-Risk Management System</h1>
-					<p><a class="am-btn am-btn-8 am-btn-secondary am-btn-lg" href="member/register.jsp">现在注册</a> </p>
+					<h1>软件开发风险管理系统-RMS</h1>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-5 hidden-xs iphone">
-				<img class="img-responsive" src="assets/pic/wsdh.jpg" alt="cover image"/>
-			</div>
+		
 		</div>
 	</div>
 </section>
