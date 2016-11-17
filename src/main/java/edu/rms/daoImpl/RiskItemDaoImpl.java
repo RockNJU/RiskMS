@@ -31,6 +31,8 @@ public class RiskItemDaoImpl implements RiskItemDao{
 	@Override
 	public String save(RiskItem riskItem) {
 		try {
+			int size=baseDao.getAllList(RiskItem.class).size();
+			riskItem.setRiskItem_id(size+1);
 			baseDao.save(riskItem);
 			return "新增风险条目成功";
 		}catch (Exception e) {			
@@ -45,7 +47,7 @@ public class RiskItemDaoImpl implements RiskItemDao{
 	public List<RiskItem> findbykey(String key) {
 		try {
 			Session session = baseDao.getNewSession();
-			String hql = "from edu.rms.model.RiskItem as r where r.ra_id = '"+key+"'";
+			String hql = "from edu.rms.model.RiskItem as r where r.content LIKE '%"+key+"%' or r.threshold LIKE '%"+key+"%'";
 			Query query=session.createQuery(hql);
 			List<RiskItem> ms=query.list();
 			session.flush();
