@@ -83,4 +83,24 @@ public class UserDaoImpl implements UserDao{
 	}
 
 
+	@Override
+	public List<User> getOptionalTracker() {
+		try {
+			Session session = baseDao.getNewSession();
+			String hql = "from edu.rms.model.User as u where u.role = 2 ";
+			Query query=session.createQuery(hql);
+			List<User> ms=query.list();
+			session.flush();
+			session.clear();
+			session.close();
+			
+			if(ms.isEmpty())return null;
+			return ms;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+
 }

@@ -22,7 +22,9 @@ probability int(10),
 effects int(10),
 threshold varchar(255),
 submitter int(255),
-tracker varchar(255),
+sub_name varchar(255),
+tracker_id varchar(255),
+tracker_name varchar(255),
 primary key(riskItem_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

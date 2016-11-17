@@ -36,7 +36,7 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 		String tr="";
 		String[] trs=null;
 		for(int i=0;i<temp.size();i++){
-			tr=temp.get(i).getTracker();
+			tr=temp.get(i).getTracker_id();
 			trs=tr.split(",");
 			for(int j=0;j<trs.length;j++){
 				if(trs[j].equals(userid)){

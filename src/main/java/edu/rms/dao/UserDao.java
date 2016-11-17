@@ -10,6 +10,7 @@ public interface UserDao {
 	public User findByName(String name);
 	public User getById(int user_id);
 	public List<User> getAll();
+	public List<User> getOptionalTracker();
 	
 
 }
