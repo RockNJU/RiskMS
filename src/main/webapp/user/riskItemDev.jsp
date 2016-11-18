@@ -112,7 +112,7 @@
 		  <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
                     <s:url action="showItemStateListModify" var="p">
-			    <s:param name="id"><s:property value="riskItem_id"/></s:param>
+			    <s:param name="riskItemId"><s:property  value="riskItem_id"/></s:param>
 			</s:url>
                     <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>查看</s:a>
          
@@ -170,7 +170,7 @@
 		  <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
                     <s:url action="showItemStateListShow" var="p">
-			    <s:param name="id"><s:property value="riskItem_id"/></s:param>
+			    <s:param name="riskItemId"><s:property  value="riskItem_id"/></s:param>
 			</s:url>
                     <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>查看</s:a>
          

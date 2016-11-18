@@ -67,6 +67,10 @@
 		<action name="showItemStateListShow" class="edu.rms.action.RiskStateTrackAction" method="getOneRiskAllStates">
 			<result name="success">/user/itemStateListDevShow.jsp</result>
 		</action>
+		
+		<action name="refreshTable" class="edu.rms.action.RiskStateTrackAction" method="refreshTableList">
+			<result name="success">/user/itemStateListDevModify.jsp</result>
+		</action>
 				<action name="itemTurnProblem" class="edu.rms.action.RiskStateTrackAction" method="turnProblem">
 			<result name="success">/user/modifyState.jsp</result>
 		</action>
@@ -74,14 +78,14 @@
 		<action name="updateState" class="edu.rms.action.RiskStateTrackAction" method="addProblem">
 			<result name="input">/user/modifyState.jsp</result>
 			<result name="success" type="chain">
-				<param name="actionName">showItemStateListModify</param>
+				<param name="actionName">refreshTable</param>
 			</result>
 		</action>
 		
 		<action name="addRiskState" class="edu.rms.action.RiskStateTrackAction" method="save">
 			<result name="input">/user/itemStateListDevModify.jsp</result>
 			<result name="success" type="chain">
-				<param name="actionName">showItemStateListModify</param>
+				<param name="actionName">refreshTable</param>
 			</result>
 		</action>
 </package>

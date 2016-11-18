@@ -85,7 +85,7 @@
       <table align="center" style="border-collapse: separate;border-spacing: 10px">
          <tr>
           <td><s:textfield name="riskStateTrack.content" label="风险内容" required="required"/></td>
-          <td><s:textfield name="RISK" label="状态" value="风险"required="required"/></td> 
+          <td><s:textfield name="RISK" label="状态" value="风险" disabled="true" required="required"/></td> 
         </tr>
        
          <tr>
@@ -136,7 +136,7 @@
 		  <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
                     <s:url action="itemTurnProblem" var="p">
-			    <s:param name="id"><s:property value="riskStateTrack_id"/></s:param>
+			   <s:param name="riskStateId"><s:property  value="riskStateTrack_id"/></s:param>
 			</s:url>
                     <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>触发</s:a>
          

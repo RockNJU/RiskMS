@@ -78,21 +78,6 @@
           <td><s:textfield name="modify_content" label="问题内容" required="required"/></td>
         </tr>
         <tr>
-         <td class="tdLabel"><label for="createTime" class="label">时段</label>
-          <td><input id="createTime" name="modify_createTime"  size="16" type="text" value="2016-11-11" readonly class="form-datetime am-form-field">
-			<script>
-			  $(function() {
-			    $('.form-datetime').datetimepicker({
-			    	format: 'yyyy-mm-dd hh:ii',
-			        autoclose: true,
-			        todayBtn: true
-			        });
-			  });
-			</script>
-        
-          </td>
-        </tr> 
-        <tr>
           <td >
           <s:submit value="新增问题" cssClass="am-btn am-btn-block am-btn-primary"/> <s:reset value="重置" cssClass="am-btn am-btn-block am-btn-success"/>
           </td>

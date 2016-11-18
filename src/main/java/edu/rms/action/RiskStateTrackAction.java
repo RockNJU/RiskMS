@@ -31,11 +31,29 @@ public class RiskStateTrackAction extends BaseAction{
 	private RiskStateTrack riskStateTrack_modify;
 	private List<RiskStateTrack> itemStateList;
 	private String modify_content;
+	private int riskItemId;
+	private int riskStateId;
 	
 	
 	
 	
 	
+	public int getRiskStateId() {
+		return riskStateId;
+	}
+
+	public void setRiskStateId(int riskStateId) {
+		this.riskStateId = riskStateId;
+	}
+
+	public int getRiskItemId() {
+		return riskItemId;
+	}
+
+	public void setRiskItemId(int riskItemId) {
+		this.riskItemId = riskItemId;
+	}
+
 	public RiskItemBusiness getRiskItemBusiness() {
 		return riskItemBusiness;
 	}
@@ -98,18 +116,35 @@ public class RiskStateTrackAction extends BaseAction{
 
 	//获得当前风险条目的所有状态信息列�?
 	public String getOneRiskAllStates() throws ServletException,IOException{
-		int idno=Integer.parseInt(req.getParameter("id"));
+		riskItemId=Integer.parseInt(req.getParameter("riskItemId"));
+		if(riskItemId==0){
+			riskItemId=(int)session.get("riskItem_id");
+		}
 		
-		session.put("riskItem_id", idno);
-		itemStateList = riskStateTrackBusiness.getOneRiskAllStates(idno);
+		session.put("riskItem_id", riskItemId);
+		
+		System.out.println(riskItemId+"@@@@@@@@@@");
+		
+		itemStateList = riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
+		return SUCCESS;
+	}
+	
+	public String refreshTableList() {
+		if(riskItemId==0){
+			riskItemId=(int)session.get("riskItem_id");
+		}
+		itemStateList = riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
 		return SUCCESS;
 	}
 	
 	//新增
 	public String save(){
+		if(riskItemId==0){
+			riskItemId=(int)session.get("riskItem_id");
+		}
 		
 		riskStateTrack.setPreviousStateId(-1);
-		riskStateTrack.setRiskItemId((int)session.get("riskItem_id"));
+		riskStateTrack.setRiskItemId(riskItemId);
 		riskStateTrack.setState(0);
 		
 		String result =  riskStateTrackBusiness.save(riskStateTrack);
@@ -121,17 +156,30 @@ public class RiskStateTrackAction extends BaseAction{
 	}
 	
 	public String turnProblem() throws ServletException,IOException{
-		riskStateTrack_modify=riskStateTrackBusiness.getStateTrackById(Integer.parseInt(req.getParameter("id")));
+		riskStateId=Integer.parseInt(req.getParameter("riskStateId"));
+		if(riskStateId==0){
+			riskStateId=(int)session.get("riskState_id");
+		}
+		session.put("riskState_id", riskStateId);
+		
+		riskStateTrack_modify=riskStateTrackBusiness.getStateTrackById(riskStateId);
 		session.put("previous_id", riskStateTrack_modify.getRiskItemId());
 		return SUCCESS;	
 	}
 	
 	public String addProblem(){
+		System.out.println(modify_content+"ssssssssssss");
+		riskStateTrack=new RiskStateTrack();
 		riskStateTrack.setContent(modify_content);
-		riskStateTrack.setPreviousStateId(riskStateTrack_modify.getRiskStateTrack_id());
-		riskStateTrack.setRiskItemId(riskStateTrack_modify.getRiskItemId());
+		riskStateTrack.setPreviousStateId((int)session.get("previous_id"));
+		riskStateTrack.setRiskItemId((int)session.get("riskState_id"));
 		riskStateTrack.setState(1);
-		return save();
+       String result =  riskStateTrackBusiness.save(riskStateTrack);
+		
+		if(result!=null){
+			return SUCCESS;
+		}
+		return INPUT;
 		
 	
 	}
