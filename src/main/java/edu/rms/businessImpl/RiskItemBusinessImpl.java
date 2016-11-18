@@ -42,14 +42,16 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 	public List<RiskItem> getMyRiskItem(int userid) {
 		List<RiskItem> temp=riskItemDao.getAll();
 		List<RiskItem> re=new ArrayList<RiskItem>();
-		re=null;
+		
+		
 		String tr="";
 		String[] trs=null;
 		for(int i=0;i<temp.size();i++){
 			tr=temp.get(i).getTracker_id();
 			trs=tr.split(";");
 			for(int j=0;j<trs.length;j++){
-				if(trs[j].equals(userid)){
+				if(trs[j].equals(String.valueOf(userid))){
+					
 					re.add(temp.get(i));
 				}
 			}
