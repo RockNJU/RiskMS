@@ -12,8 +12,8 @@ node {
     stage('deploy') {
         sh "docker stop mynewd || true"
         sh "docker rm mynewd || true"
-        sh "docker run --name mynewd -p 11113:8080 -d tomcat"
-        sh "docker cp target/maven-web-demo.war mynewd:/usr/local/tomcat/webapps"
+        sh "docker run --name mynewd -p 11111:8080 -d dordoka/tomcat"
+        sh "docker cp target/maven-web-demo.war mynewd:/opt/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
