@@ -10,10 +10,10 @@ node {
         sh "${mvnHome}/bin/mvn -B clean package"
     }
     stage('deploy') {
-        sh "docker stop mynewd || true"
-        sh "docker rm mynewd || true"
-        sh "docker run --name mynewd -p 11115:8080 -d tomcat"
-        sh "docker cp target/maven-web-demo.war mynewd:/usr/local/tomcat/webapps"
+        sh "docker stop my || true"
+        sh "docker rm my || true"
+        sh "docker run --name my -p 23333:8080 -d tomcat"
+        sh "docker cp target/maven-web-demo.war my:/usr/local/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true

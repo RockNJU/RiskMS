@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.risk.demo</groupId>
-  <artifactId>maven-web-demo</artifactId>
+  <artifactId>RiskMS</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>maven-web-demo Maven Webapp</name>
+  <version>1.0-SNAPSHOT</version>
+  <name>RiskMS Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -306,13 +306,12 @@
 	
   </dependencies>
   <build>
-    <finalName>maven-web-demo</finalName>
+    <finalName>RiskMS</finalName>
 
 	    <plugins>  
         <plugin>  
             <groupId>org.apache.maven.plugins</groupId>  
-            <artifactId>maven-compiler-plugin</artifactId>  
-            <version>3.1</version>  
+            <artifactId>maven-compiler-plugin</artifactId>    
             <configuration>  
                 <source>1.6</source>  
                 <target>1.6</target>  
