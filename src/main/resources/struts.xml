@@ -31,13 +31,7 @@
 			</result>
 		</action>
 		
-<!-- ####################我是分割线###################### -->
-		
-		
-	<action name="loginMD" class="edu.rms.action.LoginAction" method="userLogin">
-			<result name="input">/user/login.jsp</result>
-			
-		</action>
+<!-- ##########Manager#####我是分割线###################### -->
 
 		<action name="showAllRiskItemForManager" class="edu.rms.action.RiskItemAction" method="getAllRiskItem">
 			<result name="success">/user/riskItemMng.jsp</result>
@@ -51,11 +45,45 @@
 		</action>
 		
 		<action name="showItemStateList" class="edu.rms.action.RiskStateTrackAction" method="getOneRiskAllStates">
-			<result name="success">/user/itemStateList.jsp</result>
+			<result name="success">/user/itemStateListMng.jsp</result>
 		</action>
-	</package>
+
 	
-	
-	
+<!-- ########Developer####我是分割线###################### -->
+		<action name="showAllRiskItemForDeveloper" class="edu.rms.action.RiskItemAction" method="getAllRiskItem">
+			<result name="success" type="chain">
+				<param name="actionName">showRiskItemOfDeveloper</param>
+			</result>
+		</action>
+		
+		<action name="showRiskItemOfDeveloper" class="edu.rms.action.RiskItemAction" method="getMyRiskItem">
+			<result name="success">/user/riskItemDev.jsp</result>
+		</action>
+		
+		<action name="showItemStateListModify" class="edu.rms.action.RiskStateTrackAction" method="getOneRiskAllStates">
+			<result name="success">/user/itemStateListDevModify.jsp</result>
+		</action>
+		
+		<action name="showItemStateListShow" class="edu.rms.action.RiskStateTrackAction" method="getOneRiskAllStates">
+			<result name="success">/user/itemStateListDevShow.jsp</result>
+		</action>
+				<action name="itemTurnProblem" class="edu.rms.action.RiskStateTrackAction" method="turnProblem">
+			<result name="success">/user/modifyState.jsp</result>
+		</action>
+		
+		<action name="updateState" class="edu.rms.action.RiskStateTrackAction" method="addProblem">
+			<result name="input">/user/modifyState.jsp</result>
+			<result name="success" type="chain">
+				<param name="actionName">showItemStateListModify</param>
+			</result>
+		</action>
+		
+		<action name="addRiskState" class="edu.rms.action.RiskStateTrackAction" method="save">
+			<result name="input">/user/itemStateListDevModify.jsp</result>
+			<result name="success" type="chain">
+				<param name="actionName">showItemStateListModify</param>
+			</result>
+		</action>
+</package>
 </struts>
 

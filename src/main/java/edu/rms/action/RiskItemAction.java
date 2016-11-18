@@ -94,9 +94,11 @@ public class RiskItemAction extends BaseAction{
 	}
 	
 	//获得当前登录人员可参与的风险条目
-	public void getMyRiskItem(){	
-		User current=(User) session.get("user");
+	public String getMyRiskItem(){	
+		User current=(User) session.get("developer");
 		riskItemListOfCurrentUser =  riskItemBusiness.getMyRiskItem(current.getUser_id());
+	
+		return SUCCESS;
 	}
 	
 	//获得可�?�的跟踪�?

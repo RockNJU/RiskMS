@@ -53,13 +53,14 @@ public class LoginAction extends BaseAction{
 		//System.out.println("userrole   "+usr.getRole());
 		if(usr!=null){
 			if(usr.getUser_psd().equals(user.getUser_psd())){
-				session.put("user", usr);
-				System.out.println("userrole   "+usr.getRole());
 				if(usr.getRole()==1){
+					session.put("manager", usr);
 					return "manager";
 				}else if(usr.getRole()==2){
+					session.put("developer", usr);
 					return "developer";
 				}else if(usr.getRole()==0){
+					session.put("admin", usr);
 					return "admin";
 				}
 				return SUCCESS;
