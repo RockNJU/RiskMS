@@ -14,14 +14,13 @@ primary key(user_id)
 
 
 INSERT INTO `user` VALUES (1,'admin','admin',0);
-INSERT INTO `user` VALUES (2,'ghl','ghl',1);
-INSERT INTO `user` VALUES (3,'cc','cc',1);
-INSERT INTO `user` VALUES (4,'wzce','wzce',1);
-INSERT INTO `user` VALUES (5,'nancy','nancy',2);
-INSERT INTO `user` VALUES (6,'kate','kate',2);
-INSERT INTO `user` VALUES (7,'why','why',2);
-INSERT INTO `user` VALUES (8,'hello','hello',2);
-INSERT INTO `user` VALUES (9,'aha','aha',2);
+INSERT INTO `user` VALUES (2,'manager','manager',1);
+INSERT INTO `user` VALUES (3,'ghl','ghl',2);
+INSERT INTO `user` VALUES (4,'cc','cc',2);
+INSERT INTO `user` VALUES (5,'wzce','wzce',2);
+INSERT INTO `user` VALUES (6,'nancy','nancy',2);
+INSERT INTO `user` VALUES (7,'kate','kate',2);
+INSERT INTO `user` VALUES (8,'why','why',2);
 
 
 drop table if EXISTS riskitem;
@@ -39,9 +38,9 @@ tracker_name varchar(255),
 primary key(riskItem_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `riskitem` VALUES (1,'steak leak',1,2,'233',2,'ghl','6;7','kate;why');
-INSERT INTO `riskitem` VALUES (2,'not fount condition',3,1,'200',3,'cc','9','aha');
-INSERT INTO `riskitem` VALUES (3,'forget and ignore',2,2,'100',4,'wzce','6;7;8','kate;why;hello');
+INSERT INTO `riskitem` VALUES (1,'steak leak',1,2,'233',2,'manager','3;5','ghl;wzce');
+INSERT INTO `riskitem` VALUES (2,'not fount condition',3,1,'200',2,'manager','4;6','cc;nancy');
+INSERT INTO `riskitem` VALUES (3,'forget and ignore',2,2,'100',2,'manager','3;4;5;6;7;8','ghl;cc;wzce;nancy;kate;why');
 
 
 drop table if EXISTS riskstatetrack;
