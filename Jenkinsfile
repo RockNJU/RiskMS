@@ -12,8 +12,8 @@ node {
     stage('deploy') {
         sh "docker stop my || true"
         sh "docker rm my || true"
-        sh "docker run --name my -p 11119:8080 -d tomcat:8"
-        sh "docker cp target/RiskMS.war my:/usr/local/tomcat/webapps"
+        sh "docker run --name my -p 11118:8080 -d dordoka/tomcat"
+        sh "docker cp target/RiskMS.war my:/opt/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
