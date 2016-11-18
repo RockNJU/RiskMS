@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import edu.nju.dessert.model.Clerk;
+
 import edu.rms.business.RiskItemBusiness;
 import edu.rms.business.RiskStateTrackBusiness;
 import edu.rms.model.RiskItem;
@@ -121,7 +121,7 @@ public class RiskStateTrackAction extends BaseAction{
 	}
 	
 	public String turnProblem() throws ServletException,IOException{
-		riskStateTrack_modify=riskStateTrackBusiness.getStateTrackById(Integer.parseInt(req.getParameter("id"));
+		riskStateTrack_modify=riskStateTrackBusiness.getStateTrackById(Integer.parseInt(req.getParameter("id")));
 		session.put("previous_id", riskStateTrack_modify.getRiskItemId());
 		return SUCCESS;	
 	}

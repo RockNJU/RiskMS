@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import edu.rms.dao.BaseDao;
 import edu.rms.dao.RiskStateTrackDao;
 import edu.rms.model.RaList;
+import edu.rms.model.RiskItem;
 import edu.rms.model.RiskStateTrack;
 import edu.rms.model.User;
 
@@ -108,6 +109,24 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 			if(re.isEmpty())return null;
 			return re;
 		}catch (Exception e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public RiskStateTrack getStateTrackById(int trackid) {
+		try {
+			Session session = baseDao.getNewSession();
+			String hql = "from edu.rms.model.RiskStateTrack as r where r.riskStateTrack_id = '"+trackid+"'";
+			Query query=session.createQuery(hql);
+			List<RiskStateTrack> ms=query.list();
+			session.flush();
+			session.clear();
+			session.close();
+			if(ms.isEmpty())return null;
+			return ms.get(0);
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
