@@ -7,6 +7,13 @@
   <version>1.0-SNAPSHOT</version>
   <name>RiskMS Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <properties>
+    <spring.version>4.2.2.RELEASE</spring.version>
+    <spring-data.version>1.2.0.RELEASE</spring-data.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -313,8 +320,8 @@
             <groupId>org.apache.maven.plugins</groupId>  
             <artifactId>maven-compiler-plugin</artifactId>    
             <configuration>  
-                <source>1.6</source>  
-                <target>1.6</target>  
+                <source>1.8</source>  
+                <target>1.8</target>  
             </configuration>  
         </plugin>  
     </plugins> 
