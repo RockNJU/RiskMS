@@ -9,4 +9,6 @@ public interface RaItemsBusiness {
 	public List<RaItems> getOneRAItems(int raid);
 	
 	public String save(RaItems raitem);
+	
+	public String remove(RaItems raitem);
 }

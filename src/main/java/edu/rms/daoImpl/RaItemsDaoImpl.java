@@ -60,10 +60,10 @@ public class RaItemsDaoImpl implements RaItemsDao{
 		
 		try {
 			baseDao.delete(ra);
-			return "SUCCESS";
+			return "success";
 		}catch (Exception e) {			
 			e.printStackTrace();	
-			return "FALSE";
+			return "false";
 		}
 		
 	}

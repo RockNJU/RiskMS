@@ -28,4 +28,10 @@ public class RaItemsBusinessImpl implements RaItemsBusiness{
 		return ridao.save(raitem);
 	}
 
+	@Override
+	public String remove(RaItems raitem) {
+		
+		return ridao.remove(raitem);
+	}
+
 }
