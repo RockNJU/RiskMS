@@ -15,4 +15,6 @@ public interface RiskItemBusiness {
 	public List<RiskItem> getAllRiskItem();
 	
 	public List<RiskItem> getMyRiskItem(int userid);
+	
+	public RiskItem getRiskById(String riskItemid);
 }

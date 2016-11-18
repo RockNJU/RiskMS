@@ -47,10 +47,10 @@ public class RaItemsDaoImpl implements RaItemsDao{
 			ra.setRaItem_id(size+1);
 				
 			baseDao.save(ra);
-			return "SUCCESS";
+			return "success";
 		}catch (Exception e) {			
 			e.printStackTrace();	
-			return "FALSE";
+			return "false";
 		}
 		
 	}

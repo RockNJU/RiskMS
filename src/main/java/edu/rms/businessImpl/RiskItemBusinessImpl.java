@@ -57,4 +57,10 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 		return re;
 	}
 
+	@Override
+	public RiskItem getRiskById(String riskItemid) {
+		// TODO Auto-generated method stub
+		return riskItemDao.getRiskById(riskItemid);
+	}
+
 }

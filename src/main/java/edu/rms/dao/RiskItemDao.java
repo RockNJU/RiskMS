@@ -11,4 +11,6 @@ public interface RiskItemDao {
 	public String save(RiskItem riskItem);
 	
 	public List<RiskItem> findbykey(String key);
+	
+	public RiskItem getRiskById(String id);
 }

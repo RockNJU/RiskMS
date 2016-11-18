@@ -1,5 +1,6 @@
 package edu.rms.daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -22,7 +23,7 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 	public List<RiskStateTrack> getOneRiskAllStates(int riskItemId) {
 		try {
 			Session session = baseDao.getNewSession();
-			String hql = "from edu.rms.model.RiskStateTrack as r where r.riskItemId = '"+riskItemId+"'";
+			String hql = "from edu.rms.model.RiskStateTrack as r where r.riskItemId = '"+riskItemId+" order by createTime desc'";
 			Query query=session.createQuery(hql);
 			List<RiskStateTrack> ms=query.list();
 			session.flush();
@@ -49,5 +50,67 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 			return "新增失败";
 		}
 	}
+
+	@Override
+	public List<String> getRecTimes(String time1, String time2) {
+		try {
+			Session session = baseDao.getNewSession();
+			
+			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
+                          "where createTime between '"+time1+"' and '"+time2+
+                          "' and state = 0 group by riskitemId ORDER BY num DESC' ";
+			Query query=session.createQuery(hql);
+			List list=query.list();
+			List<String> re=new ArrayList<String>();
+			String temp="";
+			for(int i = 0; i <list.size();i++) {
+	             Object[] obj =(Object[])list.get(i);
+	             String count = String.valueOf(obj[0]);
+	             String riskitemid = String.valueOf(obj[1]);
+	             temp = riskitemid+";"+count;
+	             re.add(temp);
+	        }	
+			session.flush();
+			session.clear();
+			session.close();
+			if(re.isEmpty())return null;
+			return re;
+		}catch (Exception e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<String> getProblemTimes(String time1, String time2) {
+		try {
+			Session session = baseDao.getNewSession();
+			
+			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
+                          "where createTime between '"+time1+"' and '"+time2+
+                          "' and state = 1 group by riskitemId ORDER BY num DESC' ";
+			Query query=session.createQuery(hql);
+			List list=query.list();
+			List<String> re=new ArrayList<String>();
+			String temp="";
+			for(int i = 0; i <list.size();i++) {
+	             Object[] obj =(Object[])list.get(i);
+	             String count = String.valueOf(obj[0]);
+	             String riskitemid = String.valueOf(obj[1]);
+	             temp = riskitemid+";"+count;
+	             re.add(temp);
+	        }	
+			session.flush();
+			session.clear();
+			session.close();
+			if(re.isEmpty())return null;
+			return re;
+		}catch (Exception e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 
 }

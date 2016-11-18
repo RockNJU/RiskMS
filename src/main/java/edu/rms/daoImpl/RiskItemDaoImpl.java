@@ -61,6 +61,26 @@ public class RiskItemDaoImpl implements RiskItemDao{
 		}
 	}
 
+
+
+	@Override
+	public RiskItem getRiskById(String id) {
+		try {
+			Session session = baseDao.getNewSession();
+			String hql = "from edu.rms.model.RiskItem as r where r.riskItem_id = '"+id+"'";
+			Query query=session.createQuery(hql);
+			List<RiskItem> ms=query.list();
+			session.flush();
+			session.clear();
+			session.close();
+			if(ms.isEmpty())return null;
+			return ms.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 
 }

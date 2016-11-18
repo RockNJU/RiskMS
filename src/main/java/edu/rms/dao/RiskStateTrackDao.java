@@ -10,5 +10,7 @@ public interface RiskStateTrackDao {
 	
 	public String save(RiskStateTrack riskStateTrack);
 	
+	public List<String> getRecTimes(String time1,String time2);
 	
+	public List<String> getProblemTimes(String time1,String time2);
 }
