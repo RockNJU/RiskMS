@@ -110,8 +110,8 @@ public class RiskItemAction extends BaseAction{
 	//增加风险条目
 	public String addRiskItem(){
 
-		riskItem_add.setSubmitter(((User) session.get("user")).getUser_id());
-		riskItem_add.setSub_name(((User) session.get("user")).getUser_name());
+		riskItem_add.setSubmitter(((User) session.get("manager")).getUser_id());
+		riskItem_add.setSub_name(((User) session.get("manager")).getUser_name());
 		String userIdStr="";
 		for(int i=0;i<selectedUserList.length;i++){
 			userIdStr+=selectedUserList[i]+";";
