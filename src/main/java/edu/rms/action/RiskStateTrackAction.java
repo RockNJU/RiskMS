@@ -114,11 +114,11 @@ public class RiskStateTrackAction extends BaseAction{
 		this.modify_content = modify_content;
 	}
 
-	//获得当前风险条目的所有状态信息列�?
+	//鑾峰緱褰撳墠椋庨櫓鏉＄洰鐨勬墍鏈夌姸鎬佷俊鎭垪锟�?
 	public String getOneRiskAllStates() throws ServletException,IOException{
 		riskItemId=Integer.parseInt(req.getParameter("riskItemId"));
 		if(riskItemId==0){
-			riskItemId=(int)session.get("riskItem_id");
+			riskItemId=(Integer)(session.get("riskItem_id"));
 		}
 		
 		session.put("riskItem_id", riskItemId);
@@ -131,16 +131,16 @@ public class RiskStateTrackAction extends BaseAction{
 	
 	public String refreshTableList() {
 		if(riskItemId==0){
-			riskItemId=(int)session.get("riskItem_id");
+			riskItemId=(Integer)session.get("riskItem_id");
 		}
 		itemStateList = riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
 		return SUCCESS;
 	}
 	
-	//新增
+	//鏂板
 	public String save(){
 		if(riskItemId==0){
-			riskItemId=(int)session.get("riskItem_id");
+			riskItemId=(Integer)session.get("riskItem_id");
 		}
 		
 		riskStateTrack.setPreviousStateId(-1);
@@ -158,7 +158,7 @@ public class RiskStateTrackAction extends BaseAction{
 	public String turnProblem() throws ServletException,IOException{
 		riskStateId=Integer.parseInt(req.getParameter("riskStateId"));
 		if(riskStateId==0){
-			riskStateId=(int)session.get("riskState_id");
+			riskStateId=(Integer)session.get("riskState_id");
 		}
 		session.put("riskState_id", riskStateId);
 		
@@ -171,8 +171,8 @@ public class RiskStateTrackAction extends BaseAction{
 		System.out.println(modify_content+"ssssssssssss");
 		riskStateTrack=new RiskStateTrack();
 		riskStateTrack.setContent(modify_content);
-		riskStateTrack.setPreviousStateId((int)session.get("previous_id"));
-		riskStateTrack.setRiskItemId((int)session.get("riskState_id"));
+		riskStateTrack.setPreviousStateId((Integer)session.get("previous_id"));
+		riskStateTrack.setRiskItemId((Integer)session.get("riskState_id"));
 		riskStateTrack.setState(1);
        String result =  riskStateTrackBusiness.save(riskStateTrack);
 		
