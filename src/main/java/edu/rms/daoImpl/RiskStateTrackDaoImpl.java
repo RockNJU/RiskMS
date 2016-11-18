@@ -1,5 +1,6 @@
 package edu.rms.daoImpl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,8 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 	public String save(RiskStateTrack riskStateTrack) {
 		try {
 			int size=baseDao.getAllList(RiskStateTrack.class).size();
-			riskStateTrack.setRiskStateTrack_id(size+1);;
+			riskStateTrack.setRiskStateTrack_id(size+1);
+			riskStateTrack.setCreateTime(new Timestamp(System.currentTimeMillis()));
 			baseDao.save(riskStateTrack);
 			return "新增成功";
 		}catch (Exception e) {			
