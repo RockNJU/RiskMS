@@ -75,6 +75,11 @@ createTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 primary key(ra_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+INSERT INTO `ralist` VALUES(1,'RA1','2016-11-16 10:59:33');
+INSERT INTO `ralist` VALUES(2,'RA2','2016-11-17 10:39:33');
+
+
 drop table if EXISTS raitems;
 create table raitems(
 raItems_id int(255),
@@ -82,3 +87,8 @@ ra_id int(255),
 riskItem_id int(255),
 primary key(raItems_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `raitems` VALUES(1,1,1);
+INSERT INTO `raitems` VALUES(2,1,2);
+INSERT INTO `raitems` VALUES(3,2,2);
+INSERT INTO `raitems` VALUES(4,2,3);

@@ -1,5 +1,6 @@
 package edu.rms.dao.Impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -38,6 +39,7 @@ public class RaListDaoImpl implements RaListDao {
 		try {
 			int size=baseDao.getAllList(RaList.class).size();
 			ra.setRa_id(size+1);
+			ra.setCreateTime(new Timestamp(System.currentTimeMillis()));
 			baseDao.save(ra);
 			return "新增计划成功";
 		}catch (Exception e) {			
