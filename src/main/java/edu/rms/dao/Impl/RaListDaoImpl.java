@@ -1,4 +1,4 @@
-package edu.rms.daoImpl;
+package edu.rms.dao.Impl;
 
 import java.util.List;
 

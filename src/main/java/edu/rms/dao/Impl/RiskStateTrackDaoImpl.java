@@ -1,4 +1,4 @@
-package edu.rms.daoImpl;
+package edu.rms.dao.Impl;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
