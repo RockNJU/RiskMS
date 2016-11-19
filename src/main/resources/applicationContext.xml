@@ -28,7 +28,7 @@
 		<property name="url"
 			value="jdbc:mysql://106.14.29.110:3306/riskms?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="root" />
 	</bean>
 	
 	<task:annotation-driven scheduler="qbScheduler" mode="proxy"/>  
