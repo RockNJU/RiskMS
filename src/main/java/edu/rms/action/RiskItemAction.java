@@ -29,12 +29,7 @@ public class RiskItemAction extends BaseAction{
 	private String[] selectedUserList;
 	private List<RiskItem> riskItemListOfCurrentUser;
 	
-	public RiskItemBusiness getRiskItemBusiness() {
-		return riskItemBusiness;
-	}
-	public void setRiskItemBusiness(RiskItemBusiness riskItemBusiness) {
-		this.riskItemBusiness = riskItemBusiness;
-	}
+
 	public RiskItem getRiskItem_add() {
 		return riskItem_add;
 	}
