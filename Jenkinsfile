@@ -13,7 +13,7 @@ node {
         sh "docker stop my || true"
         sh "docker rm my || true"
         sh "docker run --name my -p 11111:8080 -v /root/logs:/usr/local/tomcat/logs -d tomcat:8"
-        sh "docker cp RiskMS/target/RiskMS.war my:/usr/local/tomcat/webapps"
+        sh "docker cp target/RiskMS.war my:/usr/local/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
