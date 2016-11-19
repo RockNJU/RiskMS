@@ -2,12 +2,15 @@ package edu.rms.dao.Impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.rms.dao.BaseDao;
 import edu.rms.dao.RaListDao;
 import edu.rms.model.RaList;
+import edu.rms.model.RiskStateTrack;
 
 @Repository
 public class RaListDaoImpl implements RaListDao {
@@ -19,7 +22,13 @@ public class RaListDaoImpl implements RaListDao {
 	
 	@Override
 	public List<RaList> getAll() {	
-		return baseDao.getAllList(RaList.class);
+		try {
+			List ls=baseDao.getAllList(RaList.class);
+			return ls;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

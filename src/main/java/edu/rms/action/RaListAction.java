@@ -137,23 +137,40 @@ public class RaListAction extends BaseAction{
 	
 	public String getAllralist(){
 		allralist=ralistbusiness.getAll();
+		for(int i=0;i<allralist.size();i++){
+			System.out.println("get id "+allralist.get(i).getRa_id()+" "+allralist.get(i).getRa_name());
+		}
+		
 		optionalItemList = riskitembusiness.getAllRiskItem();
 		session.put("optionList", optionalItemList);
 		if(tempIdList==null){
 			tempIdList = new ArrayList<String>();
 			session.put("tempItemId", tempIdList);
 		}
+		for(int i=0;i<allralist.size();i++){
+			System.out.println("get id one more time "+allralist.get(i).getRa_id()+" "+allralist.get(i).getRa_name());
+		}
+		
 		return SUCCESS;
 	}
 	
 	public String getItemByReg(){
 		optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
+		System.out.println(beginTime+"  dadadaf   "+endTime);
+		for(int i=0;i<optionalItemList.size();i++){
+			System.out.println("dasdadad"+optionalItemList.get(i).getRiskItem_id());
+		}
+		
 		session.put("optionList", optionalItemList);
 		return refreshTempItemListTable();
 	}
 	
 	public String getItemByPro(){
 		optionalItemList = riskitembusiness.getRiskItemByPro(beginTime,endTime);
+		System.out.println(beginTime+"  dadadaf   "+endTime);
+		for(int i=0;i<optionalItemList.size();i++){
+			System.out.println("dasdadad"+optionalItemList.get(i).getRiskItem_id());
+		}
 		session.put("optionList", optionalItemList);
 		return refreshTempItemListTable(); 
 	}
