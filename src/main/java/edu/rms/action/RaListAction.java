@@ -1,5 +1,7 @@
 package edu.rms.action;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +33,74 @@ public class RaListAction extends BaseAction{
 	private int ralist_id;
 	private List<RiskItem> riskitem;
 	
-	//所增加的风险计划和该风险计划下所有的风险条目
+	//所增加的风险计划和该风险计划下所有的风险条目id
 	private RaList add_ralist;
-	private String add_raitems;
+	private List<String> tempIdList;
+	
+	//所有可选的风险条目
+	private List<RiskItem> optionalItemList;
+	private List<RiskItem> selectedItemList;
 	
 	//我觉得这个需要看界面是怎么要的
 	//查询到的被识别最多的风险条目的信息
 	//查询到的转变成问题最多的风险条目的信息
+	private Timestamp beginTime;
+	private Timestamp endTime;
+	private String sortType;  //1按识别最多 2按问题最多 3所有
 	
 	
 	
+
+	public String getSortType() {
+		return sortType;
+	}
+
+	public void setSortType(String sortType) {
+		this.sortType = sortType;
+	}
+
+	public List<RiskItem> getSelectedItemList() {
+		return selectedItemList;
+	}
+
+	public void setSelectedItemList(List<RiskItem> selectedItemList) {
+		this.selectedItemList = selectedItemList;
+	}
+
+	public List<String> getTempIdList() {
+		return tempIdList;
+	}
+
+	public void setTempIdList(List<String> tempIdList) {
+		this.tempIdList = tempIdList;
+	}
+
+	public Timestamp getBeginTime() {
+		return beginTime;
+	}
+
+	public void setBeginTime(Timestamp beginTime) {
+		this.beginTime = beginTime;
+	}
+
+	public Timestamp getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Timestamp endTime) {
+		this.endTime = endTime;
+	}
+
 	public int getRalist_id() {
 		return ralist_id;
+	}
+
+	public List<RiskItem> getOptionalItemList() {
+		return optionalItemList;
+	}
+
+	public void setOptionalItemList(List<RiskItem> optionalItemList) {
+		this.optionalItemList = optionalItemList;
 	}
 
 	public void setRalist_id(int ralist_id) {
@@ -65,13 +123,6 @@ public class RaListAction extends BaseAction{
 		this.add_ralist = add_ralist;
 	}
 
-	public String getAdd_raitems() {
-		return add_raitems;
-	}
-
-	public void setAdd_raitems(String add_raitems) {
-		this.add_raitems = add_raitems;
-	}
 
 	public void setAllralist(List<RaList> allralist) {
 		this.allralist = allralist;
@@ -80,8 +131,33 @@ public class RaListAction extends BaseAction{
 	
 	/*---start all method----*/
 	
-	public void getAllralist(){
+	public String getAllralist(){
 		allralist=ralistbusiness.getAll();
+		optionalItemList = riskitembusiness.getAllRiskItem();
+		session.put("optionList", optionalItemList);
+		if(tempIdList==null){
+			tempIdList = new ArrayList<String>();
+			session.put("tempItemId", tempIdList);
+		}
+		return SUCCESS;
+	}
+	
+	public String getItemByReg(){
+		//optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
+		session.put("optionList", optionalItemList);
+		return refreshTempItemListTable();
+	}
+	
+	public String getItemByPro(){
+		//optionalItemList = riskitembusiness.getRiskItemByPro(beginTime,endTime);
+		session.put("optionList", optionalItemList);
+		return refreshTempItemListTable(); 
+	}
+	
+	public String getAllItem(){
+		optionalItemList = riskitembusiness.getAllRiskItem();
+		session.put("optionList", optionalItemList);
+		return refreshTempItemListTable(); 
 	}
 	
 	public String getOneRiskAllItems(){
@@ -98,13 +174,13 @@ public class RaListAction extends BaseAction{
 		int newid=ralistbusiness.getAll().size()+1;
 		String re=ralistbusiness.save(add_ralist);
 		String reforitem="success";
+		tempIdList=(List<String>)session.get("tempItemId");
 		if(re.equals("新增计划成功")){
 			//保存所有的reitem
-			String[] temp=add_raitems.split(";");
 			RaItems a=new RaItems();
 			
-			for(int i=0;i<temp.length;i++){
-				a.setRaItem_id(Integer.parseInt(temp[i]));
+			for(int i=0;i<tempIdList.size();i++){
+				a.setRaItem_id(Integer.parseInt(tempIdList.get(i)));
 				a.setRiskItem_id(newid);
 				String te=raitemsbusiness.save(a);
 				if(!te.equals("success")){
@@ -115,12 +191,40 @@ public class RaListAction extends BaseAction{
 			reforitem="false";
 		}
 		if(reforitem.equals("success")){
-			return SUCCESS;
+			tempIdList.clear();
+			allralist=ralistbusiness.getAll();
+			return refreshTempItemListTable();
 		}else{
 			return INPUT;
 		}
 		
 		
+	}
+	
+	public String addTempItemId(){
+		String id = (String)(req.getParameter("addTempItemId"));
+		tempIdList=(List<String>)session.get("tempItemId");
+		if(tempIdList.indexOf(id)==-1){
+			tempIdList.add(id);
+			session.put("tempItemId", tempIdList);
+		}
+		return refreshTempItemListTable();
+		
+	}
+	
+	public String rmvTempItemId(){
+		String id = (String)(req.getParameter("rmvTempItemId"));
+		tempIdList=(List<String>)session.get("tempItemId");
+		tempIdList.remove(id);
+		session.put("tempItemId", tempIdList);
+		return refreshTempItemListTable();
+		
+	}
+
+	private String refreshTempItemListTable() {
+		selectedItemList=riskitembusiness.getItemListByIdList((List<String>)session.get("tempItemId"));
+		optionalItemList = (List<RiskItem>)session.get("optionList");
+		return SUCCESS;
 	}
 	
 	

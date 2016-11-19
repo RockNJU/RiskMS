@@ -65,4 +65,15 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 		return riskItemDao.getRiskById(riskItemid);
 	}
 
+	@Override
+	public List<RiskItem> getItemListByIdList(List<String> tempIdList) {
+		List<RiskItem> re=new ArrayList<RiskItem>();
+		RiskItem temp=new RiskItem();
+		for(int i=0;i<tempIdList.size();i++){
+			temp=riskItemDao.getRiskById(tempIdList.get(i));
+			re.add(temp);
+		}
+		return re;
+	}
+
 }

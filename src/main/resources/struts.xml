@@ -88,6 +88,36 @@
 				<param name="actionName">refreshTable</param>
 			</result>
 		</action>
+		
+		
+		<!--#######################RA################################## -->
+		<action name="showAllRA" class="edu.rms.action.RaListAction" method="getAllralist">
+			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="addToTempItemList" class="edu.rms.action.RaListAction" method="addTempItemId">
+			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="rmvFromTempItemList" class="edu.rms.action.RaListAction" method="rmvTempItemId">
+			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="sortItem" class="edu.rms.action.RaListAction" method="getAllItem">
+			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="sortReg" class="edu.rms.action.RaListAction" method="getItemByReg">
+			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="sortPro" class="edu.rms.action.RaListAction" method="getItemByPro">
+			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="addNewRA" class="edu.rms.action.RaListAction" method="addRaList">
+			<result name="success">/user/raList.jsp</result>
+		</action>
 </package>
 </struts>
 

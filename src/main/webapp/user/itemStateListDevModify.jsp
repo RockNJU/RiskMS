@@ -131,6 +131,7 @@
        
       
        <s:set var="riskStateTrack" value="#s" scope="session"></s:set>
+       <s:if test="state==0">
 		  <td>
 		  
 		  <div class="am-btn-toolbar">
@@ -144,6 +145,7 @@
                 </div>
 		  
 		   </td>
+		   </s:if>
       
      </tr>
      </s:iterator>

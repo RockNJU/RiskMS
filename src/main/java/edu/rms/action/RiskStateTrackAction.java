@@ -54,7 +54,13 @@ public class RiskStateTrackAction extends BaseAction{
 		this.riskItemId = riskItemId;
 	}
 
+	public RiskItemBusiness getRiskItemBusiness() {
+		return riskItemBusiness;
+	}
 
+	public void setRiskItemBusiness(RiskItemBusiness riskItemBusiness) {
+		this.riskItemBusiness = riskItemBusiness;
+	}
 
 	public RiskItem getRiskItem() {
 		return riskItem;
@@ -64,6 +70,13 @@ public class RiskStateTrackAction extends BaseAction{
 		this.riskItem = riskItem;
 	}
 
+	public RiskStateTrackBusiness getRiskStateTrackBusiness() {
+		return riskStateTrackBusiness;
+	}
+
+	public void setRiskStateTrackBusiness(RiskStateTrackBusiness riskStateTrackBusiness) {
+		this.riskStateTrackBusiness = riskStateTrackBusiness;
+	}
 
 	public RiskStateTrack getRiskStateTrack() {
 		return riskStateTrack;
@@ -155,7 +168,6 @@ public class RiskStateTrackAction extends BaseAction{
 	}
 	
 	public String addProblem(){
-		System.out.println(modify_content+"ssssssssssss");
 		riskStateTrack=new RiskStateTrack();
 		riskStateTrack.setContent(modify_content);
 		riskStateTrack.setPreviousStateId((Integer)session.get("previous_id"));

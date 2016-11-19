@@ -38,6 +38,8 @@
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
         <li><a href="../admin/showAllRiskItemForManager"><span class="am-icon-home"></span> 风险条目管理</a></li>
+        <li><a href="../admin/showAllRA"><span class="am-icon-home"></span> 风险管理计划</a></li>
+      <li><a href="../admin/showAllRiskItemForManager"><span class="am-icon-home"></span> 风险库统计</a></li>
          <li><a href="../index.jsp"><span class="am-icon-calendar"></span> 注销</a></li>
         
       </ul>
@@ -63,6 +65,7 @@
   <div class="admin-content">		
 	<div class="am-cf am-padding">
       <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">风险条目管理</strong> <small></small></div>
+      
     </div>
     
 <div class="am-tabs am-margin" data-am-tabs>
