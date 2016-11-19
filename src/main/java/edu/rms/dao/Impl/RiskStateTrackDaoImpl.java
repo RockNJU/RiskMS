@@ -131,6 +131,64 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 			return null;
 		}
 	}
+
+	@Override
+	public List<String> getRecTimesNoTime() {
+		try {
+			Session session = baseDao.getNewSession();
+			
+			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
+                          "where state = 0 group by riskitemId ORDER BY num DESC' ";
+			Query query=session.createQuery(hql);
+			List list=query.list();
+			List<String> re=new ArrayList<String>();
+			String temp="";
+			for(int i = 0; i <list.size();i++) {
+	             Object[] obj =(Object[])list.get(i);
+	             String count = String.valueOf(obj[0]);
+	             String riskitemid = String.valueOf(obj[1]);
+	             temp = riskitemid+";"+count;
+	             re.add(temp);
+	        }	
+			session.flush();
+			session.clear();
+			session.close();
+			if(re.isEmpty())return null;
+			return re;
+		}catch (Exception e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<String> getProblemNoTime() {
+		try {
+			Session session = baseDao.getNewSession();
+			
+			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
+                          "where state = 1 group by riskitemId ORDER BY num DESC' ";
+			Query query=session.createQuery(hql);
+			List list=query.list();
+			List<String> re=new ArrayList<String>();
+			String temp="";
+			for(int i = 0; i <list.size();i++) {
+	             Object[] obj =(Object[])list.get(i);
+	             String count = String.valueOf(obj[0]);
+	             String riskitemid = String.valueOf(obj[1]);
+	             temp = riskitemid+";"+count;
+	             re.add(temp);
+	        }	
+			session.flush();
+			session.clear();
+			session.close();
+			if(re.isEmpty())return null;
+			return re;
+		}catch (Exception e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	
 

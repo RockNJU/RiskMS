@@ -45,4 +45,15 @@ public class RiskStateTrackBusinessImpl implements RiskStateTrackBusiness{
 		return rDao.getStateTrackById(trackid);
 	}
 
+	@Override
+	public List<String> getRecTimesNoTime() {
+		
+		return rDao.getRecTimesNoTime();
+	}
+
+	@Override
+	public List<String> getProblemTimesNoTime() {
+		return rDao.getProblemNoTime();
+	}
+
 }

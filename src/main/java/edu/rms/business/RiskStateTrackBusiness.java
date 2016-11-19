@@ -16,6 +16,10 @@ public interface RiskStateTrackBusiness {
 	public List<String> getRecTimes(String time1,String time2); 
 	
 	public List<String> getProblemTimes(String time1,String time2);
+	
+    public List<String> getRecTimesNoTime(); 
+	
+	public List<String> getProblemTimesNoTime();
 
 	public RiskStateTrack getStateTrackById(int trackid);
 }

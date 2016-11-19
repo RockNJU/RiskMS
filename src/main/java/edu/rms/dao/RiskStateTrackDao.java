@@ -12,7 +12,11 @@ public interface RiskStateTrackDao {
 	
 	public List<String> getRecTimes(String time1,String time2);
 	
+	public List<String> getRecTimesNoTime();
+	
 	public List<String> getProblemTimes(String time1,String time2);
+	
+	public List<String> getProblemNoTime();
 
 	public RiskStateTrack getStateTrackById(int trackid);
 }

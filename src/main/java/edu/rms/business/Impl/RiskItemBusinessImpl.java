@@ -1,5 +1,6 @@
 package edu.rms.business.Impl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.rms.business.RiskItemBusiness;
 import edu.rms.dao.RiskItemDao;
+import edu.rms.dao.RiskStateTrackDao;
 import edu.rms.dao.UserDao;
 import edu.rms.model.RiskItem;
 
@@ -18,6 +20,9 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 	private RiskItemDao riskItemDao;
 	@Autowired
 	private UserDao udao;
+	
+	@Autowired
+	private RiskStateTrackDao rDao;
 	
 	@Override
 	public String addRiskItem(RiskItem riskItem) {
@@ -74,6 +79,40 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 			re.add(temp);
 		}
 		return re;
+	}
+
+	@Override
+	public List<RiskItem> getRiskItemByReg(Timestamp beginTime, Timestamp endTime) {
+		List<String> re;
+		if(beginTime==null){
+			re=rDao.getRecTimesNoTime();
+		}else{
+			re=rDao.getRecTimes(beginTime.toString(), endTime.toString());
+		}
+		String[] temp;
+		List<RiskItem> result=new ArrayList<RiskItem>();
+		for(int i=0;i<re.size();i++){
+			temp=re.get(i).split(";");
+			result.add(riskItemDao.getRiskById(temp[0]));
+		}
+		return result;
+	}
+
+	@Override
+	public List<RiskItem> getRiskItemByPro(Timestamp beginTime, Timestamp endTime) {
+		List<String> re;
+		if(beginTime==null){
+			re=rDao.getProblemNoTime();
+		}else{
+			re=rDao.getProblemTimes(beginTime.toString(), endTime.toString());
+		}
+		String[] temp;
+		List<RiskItem> result=new ArrayList<RiskItem>();
+		for(int i=0;i<re.size();i++){
+			temp=re.get(i).split(";");
+			result.add(riskItemDao.getRiskById(temp[0]));
+		}
+		return result;
 	}
 
 }

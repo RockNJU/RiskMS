@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import edu.rms.business.RaItemsBusiness;
 import edu.rms.business.RaListBusiness;
 import edu.rms.business.RiskItemBusiness;
+import edu.rms.business.RiskStateTrackBusiness;
 import edu.rms.model.RaItems;
 import edu.rms.model.RaList;
 import edu.rms.model.RiskItem;
@@ -25,6 +26,9 @@ public class RaListAction extends BaseAction{
 	
 	@Autowired
 	private RiskItemBusiness riskitembusiness;
+	
+	@Autowired
+	private RiskStateTrackBusiness riskstatetrackbusiness;
 	
 	//所有的风险计划
 	private List<RaList> allralist;
@@ -143,13 +147,13 @@ public class RaListAction extends BaseAction{
 	}
 	
 	public String getItemByReg(){
-		//optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
+		optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
 		session.put("optionList", optionalItemList);
 		return refreshTempItemListTable();
 	}
 	
 	public String getItemByPro(){
-		//optionalItemList = riskitembusiness.getRiskItemByPro(beginTime,endTime);
+		optionalItemList = riskitembusiness.getRiskItemByPro(beginTime,endTime);
 		session.put("optionList", optionalItemList);
 		return refreshTempItemListTable(); 
 	}
