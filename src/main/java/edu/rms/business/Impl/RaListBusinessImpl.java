@@ -52,10 +52,14 @@ public class RaListBusinessImpl implements RaListBusiness{
 		radao.update(ralist);
 		rDao.delete(ra_id);
 		RaItems ri=new RaItems();
+		if(itemList==null){
+			
+		}else{
 		for(int i=0;i<itemList.size();i++){
 			ri.setRiskItem_id(Integer.parseInt(itemList.get(i)));
 			ri.setRa_id(ra_id);
 			rDao.save(ri);
+		}
 		}
 	}
 

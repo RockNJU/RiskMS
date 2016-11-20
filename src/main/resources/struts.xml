@@ -103,6 +103,14 @@
 			<result name="success">/user/raList.jsp</result>
 		</action>
 		
+		<action name="addToTempItemListRA" class="edu.rms.action.RaListAction" method="addTempItemId">
+			<result name="success">/user/modifyRA.jsp</result>
+		</action>
+		
+		<action name="rmvFromTempItemListRA" class="edu.rms.action.RaListAction" method="rmvTempItemId">
+			<result name="success">/user/modifyRA.jsp</result>
+		</action>
+		
 		<action name="sortItem" class="edu.rms.action.RaListAction" method="getAllItem">
 			<result name="success">/user/raList.jsp</result>
 		</action>
@@ -113,6 +121,18 @@
 	
 		<action name="sortPro" class="edu.rms.action.RaListAction" method="getItemByPro">
 			<result name="success">/user/raList.jsp</result>
+		</action>
+		
+		<action name="sortItemRA" class="edu.rms.action.RaListAction" method="getAllItem">
+			<result name="success">/user/modifyRA.jsp</result>
+		</action>
+		
+		<action name="sortRegRA" class="edu.rms.action.RaListAction" method="getItemByReg">
+			<result name="success">/user/modifyRA.jsp</result>
+		</action>
+	
+		<action name="sortProRA" class="edu.rms.action.RaListAction" method="getItemByPro">
+			<result name="success">/user/modifyRA.jsp</result>
 		</action>
 	
 		
@@ -144,7 +164,7 @@
 		</action>
 		
 		<action name="showRAItemList" class="edu.rms.action.RaListAction" method="getRAtoModify">
-			<result name="success" >modifyRA.jsp</result>
+			<result name="success" >/user/modifyRA.jsp</result>
 		</action>
 		
 		<action name="delRAItem" class="edu.rms.action.RaListAction" method="deleteRA">
@@ -152,7 +172,7 @@
 		</action>
 		
 		<action name="updateRA" class="edu.rms.action.RaListAction" method="updateRAtoModify">
-			<result name="success" >showRAItemList</result>
+			<result name="success" >/user/modifyRA.jsp</result>
 		</action>
 </package>
 </struts>

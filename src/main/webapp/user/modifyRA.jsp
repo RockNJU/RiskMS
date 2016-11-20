@@ -165,7 +165,7 @@
 		  <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
                     
-          <s:url action="addToTempItemList" var="p">
+          <s:url action="addToTempItemListRA" var="p">
 			    <s:param name="addTempItemId"><s:property value="riskItem_id"/></s:param>
 			</s:url>
                     <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>添加到计划</s:a>
@@ -216,12 +216,12 @@
        <td><s:property value="sub_name"/></td>
        <td><s:property value="tracker_name"/></td>
        
-       <s:set var="riskItem2" value="#s2" scope="session"></s:set>
+       <s:set var="riskItem" value="#s2" scope="session"></s:set>
 		  <td>
 		  
 		  <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <s:url action="rmvFromTempItemList" var="p">
+                    <s:url action="rmvFromTempItemListRA" var="p">
 			    <s:param name="rmvTempItemId"><s:property value="riskItem_id"/></s:param>
 			</s:url>
                     <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>从计划移除</s:a>
@@ -238,7 +238,8 @@
      </tr>
      </s:iterator>
       </table>
-      <td><s:textfield name="hasmodifyRA.ra_name" value="unmodifyRA.ra_name" label="计划名称" required="required"/></td>
+     
+      <td><s:textfield name="hasmodifyRA.ra_name"  label="计划名称" required="required"/></td>
       <td align="center">
           <s:submit value="提交修改" cssClass="am-btn am-btn-block am-btn-primary"/>
           </td>

@@ -246,19 +246,39 @@ public class RaListAction extends BaseAction{
 	}
 	
 	public String getRAtoModify(){
+		
 		int id = Integer.parseInt(req.getParameter("raId"));
+		
 		List<String> itemIdList = raitemsbusiness.getOneRAItems(id);
 		
 		session.put("tempItemId", itemIdList);
 		unmodifyRA = ralistbusiness.getRAbyId(id);
+		session.put("unmodifyRA", unmodifyRA);
+		getAllItem();
+		refreshTempItemListTable();
 		
 		return SUCCESS;
 	}
 	
 	public String updateRAtoModify(){
 		List<String> itemList = (List<String>)session.get("tempItemId");
+		unmodifyRA = (RaList)session.get("unmodifyRA");
+		System.out.println(unmodifyRA.getRa_id()+"unmodifyRA.getRa_id()");
+		System.out.println(hasmodifyRA.getRa_name()+"hasmodifyRA.getRa_name()");
+		System.out.println(itemList==null);
 		//三个参数分别为  要更新的RA的id  修改的name和条目列表的条目id
 		 ralistbusiness.updateRAbyId(unmodifyRA.getRa_id(),hasmodifyRA.getRa_name(),itemList);
+		 
+		 
+			
+			
+			List<String> itemIdList = raitemsbusiness.getOneRAItems(unmodifyRA.getRa_id());
+			
+			session.put("tempItemId", itemIdList);
+			unmodifyRA = ralistbusiness.getRAbyId(unmodifyRA.getRa_id());
+			session.put("unmodifyRA", unmodifyRA);
+			getAllItem();
+			refreshTempItemListTable();
 		return SUCCESS;
 	}
 	

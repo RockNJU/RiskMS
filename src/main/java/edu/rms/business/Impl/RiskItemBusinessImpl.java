@@ -83,11 +83,15 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 	public List<RiskItem> getItemListByIdList(List<String> tempIdList) {
 		List<RiskItem> re=new ArrayList<RiskItem>();
 		RiskItem temp=new RiskItem();
+		if(tempIdList==null){
+			return null;
+		}else{
 		for(int i=0;i<tempIdList.size();i++){
 			temp=riskItemDao.getRiskById(tempIdList.get(i));
 			re.add(temp);
 		}
 		return re;
+		}
 	}
 
 	@Override
