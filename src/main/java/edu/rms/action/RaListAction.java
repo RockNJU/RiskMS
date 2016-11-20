@@ -48,9 +48,6 @@ public class RaListAction extends BaseAction{
 	//我觉得这个需要看界面是怎么要的
 	//查询到的被识别最多的风险条目的信息
 	//查询到的转变成问题最多的风险条目的信息
-	private Timestamp beginTime;
-	private Timestamp endTime;
-	
 
 	public List<RiskItem> getSelectedItemList() {
 		return selectedItemList;
@@ -68,21 +65,6 @@ public class RaListAction extends BaseAction{
 		this.tempIdList = tempIdList;
 	}
 
-	public Timestamp getBeginTime() {
-		return beginTime;
-	}
-
-	public void setBeginTime(Timestamp beginTime) {
-		this.beginTime = beginTime;
-	}
-
-	public Timestamp getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Timestamp endTime) {
-		this.endTime = endTime;
-	}
 
 	public int getRalist_id() {
 		return ralist_id;
@@ -128,24 +110,18 @@ public class RaListAction extends BaseAction{
 	
 	public String getAllRAlist(){
 		allralist=ralistbusiness.getAll();
-		for(int i=0;i<allralist.size();i++){
-			System.out.println("get id "+allralist.get(i).getRa_id()+" "+allralist.get(i).getRa_name());
-		}
-		
 		optionalItemList = riskitembusiness.getAllRiskItem();
 		session.put("optionList", optionalItemList);
 		if(tempIdList==null){
 			tempIdList = new ArrayList<String>();
 			session.put("tempItemId", tempIdList);
 		}
-		for(int i=0;i<allralist.size();i++){
-			System.out.println("get id one more time "+allralist.get(i).getRa_id()+" "+allralist.get(i).getRa_name());
-		}
-		
 		return SUCCESS;
 	}
 	
 	public String getItemByReg(){
+		String beginTime = (String)(req.getParameter("bt"));
+		String endTime = (String)(req.getParameter("et"));
 		optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
 		System.out.println(beginTime+"  dadadaf   "+endTime);
 		for(int i=0;i<optionalItemList.size();i++){
@@ -158,6 +134,8 @@ public class RaListAction extends BaseAction{
 	}
 	
 	public String getItemByPro(){
+		String beginTime = (String)(req.getParameter("bt"));
+		String endTime = (String)(req.getParameter("et"));
 		optionalItemList = riskitembusiness.getRiskItemByPro(beginTime,endTime);
 		System.out.println(beginTime+"  dadadaf   "+endTime);
 		for(int i=0;i<optionalItemList.size();i++){

@@ -22,7 +22,24 @@
 		
 		<!-- 本页面所需要的js函数 -->
 		<script language="javascript">
-		
+		function reg(){
+			var bt = $("#beginTime").val();
+			var et = $("#endTime").val();
+			var url="sortReg.action?bt="+bt+"&et="+et;
+			window.location.href=url;
+		}
+		function pro(){
+			var bt = $("#beginTime").val();
+			var et = $("#endTime").val();
+			var url="sortPro.action?bt="+bt+"&et="+et;
+			window.location.href=url;
+		}
+		function all(){
+			var bt = $("#beginTime").val();
+			var et = $("#endTime").val();
+			var url="sortItem.action?bt="+bt+"&et="+et;
+			window.location.href=url;
+		}
 		
 		</script>
 	</head>
@@ -78,7 +95,7 @@
 
 
 
- 	<s:form id="form1" method="post" cssClass="am-form">
+ 	<s:form id="form1" cssClass="am-form">
  	<p style="color：blue;font-weight:bold;font-size:16px">风险条目列表</p><br>
  	<table id="tab" class="am-table am-table-striped am-table-hover table-main">
  	<tr>
@@ -104,9 +121,9 @@
 			  });
 			</script>
 			</td>
- 	<td><s:submit theme="simple" action="/admin/sortItem?bt=#beginTime&et=#endTime" method="getItemByReg"  value="被识别最多" /></td>
- 	<td><s:submit theme="simple" method="getItemByPro"  value="变问题最多" /></td>
- 	<td><s:submit theme="simple" method="getAllItem" value="所有风险条目"/></td>
+ 	<td><input type="button" onclick="reg();" value="被识别最多" /></td>
+ 	<td><input type="button" onclick="pro();"  value="变问题最多" /></td>
+ 	<td><input type="button" onclick="all();" value="所有风险条目"/></td>
     </tr>
     </table>
    </s:form>
