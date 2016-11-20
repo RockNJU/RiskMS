@@ -39,7 +39,7 @@
       <ul class="am-list admin-sidebar-list">
         <li><a href="../admin/showAllRiskItemForManager"><span class="am-icon-home"></span> 风险条目管理</a></li>
         <li><a href="../admin/showAllRA"><span class="am-icon-home"></span> 风险管理计划</a></li>
-      <li><a href="../admin/showAllRiskItemForManager"><span class="am-icon-home"></span> 风险库统计</a></li>
+      <li><a href="../admin/statis"><span class="am-icon-home"></span> 风险库统计</a></li>
          <li><a href="../index.jsp"><span class="am-icon-calendar"></span> 注销</a></li>
         
       </ul>

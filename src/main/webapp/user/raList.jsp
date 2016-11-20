@@ -54,7 +54,9 @@
 	<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
-        <li><a href="../admin/showAllRA"><span class="am-icon-home"></span> 风险计划管理</a></li>
+         <li><a href="../admin/showAllRiskItemForManager"><span class="am-icon-home"></span> 风险条目管理</a></li>
+        <li><a href="../admin/showAllRA"><span class="am-icon-home"></span> 风险管理计划</a></li>
+      <li><a href="../admin/statis"><span class="am-icon-home"></span> 风险库统计</a></li>
          <li><a href="../index.jsp"><span class="am-icon-calendar"></span> 注销</a></li>
         
       </ul>
@@ -223,6 +225,11 @@
 			    <s:param name="rmvTempItemId"><s:property value="riskItem_id"/></s:param>
 			</s:url>
                     <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>从计划移除</s:a>
+                 
+                  <s:url action="modifyItem" var="b">
+			    <s:param name="modifyItemId"><s:property value="riskItem_id"/></s:param>
+			</s:url>
+                    <s:a href="%{b}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>修改风险条目</s:a>
                   </div>
                 </div>
 		  

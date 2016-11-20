@@ -19,13 +19,22 @@
 		<script src="../assets/js/jquery.min.js"></script>
 		<script src="../assets/js/amazeui.js"></script>
 		<script src="../assets/js/amazeui.datetimepicker.js"></script>
+		<script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/amazeui.js"></script>
+		<script src="../assets/js/highcharts.js"></script>
+        <script src="../assets/js/modules/exporting.js"></script>
 				<script type="text/javascript">
-		$(function () {
+				
+	$(document).ready(function(){
+		chart1();chart2();
+	});			
+	
+	function chart1() {
 		    $('#riskRatioReg').highcharts({
 		        chart: {
 		            type: 'column'
 		        }, title: {
-		            text: ''
+		            text: '风险被识别统计'
 		        }, xAxis: {
 		            categories: ${itemsReg.toString()}
 		        },
@@ -55,14 +64,14 @@
 
 		        }]
 		    });
-		});
+		}
 		
-		$(function () {
+		function chart2() {
 		    $('#riskRatioPro').highcharts({
 		        chart: {
 		            type: 'column'
 		        }, title: {
-		            text: ''
+		            text: '衍生问题统计'
 		        }, xAxis: {
 		            categories: ${itemsPro.toString()}
 		        },
@@ -92,25 +101,30 @@
 
 		        }]
 		    });
-		});
+		}
+		
 		
 		function reg(){
-			var bt = $("#beginTime").val();
-			var et = $("#endTime").val();
+			var bt = $("#beginTime1").val();
+			var et = $("#endTime1").val();
 			var url="statisRegTime.action?bt="+bt+"&et="+et;
 			window.location.href=url;
+			location.reload();
 		}
+		
 		function pro(){
-			var bt = $("#beginTime").val();
-			var et = $("#endTime").val();
+			var bt = $("#beginTime2").val();
+			var et = $("#endTime2").val();
 			var url="statisProTime.action?bt="+bt+"&et="+et;
 			window.location.href=url;
+			location.reload();
+			
 		}
+		
 		function all(){
-			var bt = $("#beginTime").val();
-			var et = $("#endTime").val();
-			var url="statis.action?bt="+bt+"&et="+et;
+			var url="statis.action";
 			window.location.href=url;
+			location.reload();
 		}
 		
 		</script>
@@ -166,13 +180,14 @@
     
 <div class="am-tabs am-margin" data-am-tabs>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="#tab1">统计图表展示</a></li>
+      <li class="am-active"><a href="#tab1">风险被识别统计</a></li>
+      <li><a href="#tab2">演变问题统计</a></li>
     </ul>
     <div class="am-tabs-bd">
       <div class="am-tab-panel am-fade am-in am-active" id="tab1">
        	<table id="table1" class="am-table am-table-striped am-table-hover table-main">
  	<tr>
- 	<td><input id="beginTime" name="beginTime"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
+ 	<td><input id="beginTime1" name="beginTime1"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
 			<script>
 			  $(function() {
 			    $('.form-datetime').datetimepicker({
@@ -183,7 +198,7 @@
 			  });
 			</script>
 			</td>
-	<td><input id="endTime" name="endTime"  size="16" type="text" value="结束时间" class="form-datetime am-form-field">
+	<td><input id="endTime1" name="endTime1"  size="16" type="text" value="结束时间" class="form-datetime am-form-field">
 			<script>
 			  $(function() {
 			    $('.form-datetime').datetimepicker({
@@ -203,7 +218,7 @@
        <div class="am-tab-panel am-fade" id="tab2">
               	<table id="table2" class="am-table am-table-striped am-table-hover table-main">
  	<tr>
- 	<td><input id="beginTime" name="beginTime"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
+ 	<td><input id="beginTime2" name="beginTime2"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
 			<script>
 			  $(function() {
 			    $('.form-datetime').datetimepicker({
@@ -214,7 +229,7 @@
 			  });
 			</script>
 			</td>
-	<td><input id="endTime" name="endTime"  size="16" type="text" value="结束时间" class="form-datetime am-form-field">
+	<td><input id="endTime2" name="endTime2"  size="16" type="text" value="结束时间" class="form-datetime am-form-field">
 			<script>
 			  $(function() {
 			    $('.form-datetime').datetimepicker({

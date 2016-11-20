@@ -85,6 +85,10 @@ public class StatisAction extends BaseAction {
 		}
 		itemsPro.append("]");
 		riskRatioPro.append("]");
+		System.out.println(itemsReg+"    itemsReg");
+		System.out.println(riskRatioReg+"    riskRatioReg");
+		System.out.println(itemsPro+"    itemsPro");
+		System.out.println(riskRatioPro+"    riskRatioPro");
 		return SUCCESS;
 	}
 	
@@ -107,7 +111,8 @@ public class StatisAction extends BaseAction {
 		}
 		itemsReg.append("]");
 		riskRatioReg.append("]");
-	
+		System.out.println(itemsReg+"    itemsReg");
+		System.out.println(riskRatioReg+"    riskRatioReg");
 		return SUCCESS;
 	}
 	
@@ -130,6 +135,8 @@ public class StatisAction extends BaseAction {
 		}
 		itemsPro.append("]");
 		riskRatioPro.append("]");
+		System.out.println(itemsPro+"    itemsPro");
+		System.out.println(riskRatioPro+"    riskRatioPro");
 		return SUCCESS;
 	}
 	

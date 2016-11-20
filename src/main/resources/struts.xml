@@ -125,11 +125,15 @@
 		</action>
 		
 		<action name="statisRegTime" class="edu.rms.action.StatisAction" method="regStatisWithTime">
-			<result name="success">/user/statis.jsp</result>
+			<result name="success"></result>
 		</action>
 		
 				
 		<action name="statisProTime" class="edu.rms.action.StatisAction" method="proStatisWithTime">
+			<result name="success"></result>
+		</action>
+		
+		<action name="modifyItem" class="edu.rms.action.StatisAction" method="proStatisWithTime">
 			<result name="success">/user/statis.jsp</result>
 		</action>
 </package>
