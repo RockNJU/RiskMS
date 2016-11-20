@@ -219,7 +219,11 @@ public class RaListAction extends BaseAction{
 	}
 	
 	
-	
+	public String deleteRA(){
+		int id = Integer.parseInt(req.getParameter("raId"));
+		ralistbusiness.deleteRA(id);
+		return SUCCESS;
+	}
 	
 	
 }

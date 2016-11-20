@@ -133,8 +133,22 @@
 			<result name="success"></result>
 		</action>
 		
-		<action name="modifyItem" class="edu.rms.action.StatisAction" method="proStatisWithTime">
-			<result name="success">/user/statis.jsp</result>
+		<action name="modifyItem" class="edu.rms.action.RiskItemAction" method="modifyRiskItem">
+			<result name="success">/user/modifyItem.jsp</result>
+		</action>
+		
+		<action name="updateItem" class="edu.rms.action.RiskItemAction" method="updateRiskItem">
+			<result name="success" type="chain">
+				<param name="actionName">showAllRA</param>
+			</result>
+		</action>
+		
+		<action name="showRAItemList" class="edu.rms.action.RaListAction" method="updateRiskItem">
+			<result name="success" >modifyRA.jsp</result>
+		</action>
+		
+		<action name="delRAItem" class="edu.rms.action.RaListAction" method="deleteRA">
+			<result name="success" >showAllRA</result>
 		</action>
 </package>
 </struts>

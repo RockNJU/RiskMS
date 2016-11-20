@@ -21,6 +21,8 @@ public class RiskItemAction extends BaseAction{
 	private RiskItemBusiness riskItemBusiness;
 	private RiskItem riskItem_add;
 	private RiskItem riskItem;
+	private RiskItem riskItem_unmodify;
+	private RiskItem riskItem_hasmodify;
 	@Autowired
 	private UserBusiness userBusiness; 
 	private User user;
@@ -30,6 +32,19 @@ public class RiskItemAction extends BaseAction{
 	private List<RiskItem> riskItemListOfCurrentUser;
 	
 
+
+	public RiskItem getRiskItem_unmodify() {
+		return riskItem_unmodify;
+	}
+	public void setRiskItem_unmodify(RiskItem riskItem_unmodify) {
+		this.riskItem_unmodify = riskItem_unmodify;
+	}
+	public RiskItem getRiskItem_hasmodify() {
+		return riskItem_hasmodify;
+	}
+	public void setRiskItem_hasmodify(RiskItem riskItem_hasmodify) {
+		this.riskItem_hasmodify = riskItem_hasmodify;
+	}
 	public RiskItem getRiskItem_add() {
 		return riskItem_add;
 	}
@@ -120,4 +135,24 @@ public class RiskItemAction extends BaseAction{
 		return INPUT;
 		
 	}
+	
+	//修改风险条目，主要是获取要修改的对象给界面
+		public String modifyRiskItem(){
+			String id = (String)(req.getParameter("modifyItemId"));
+			session.put("modifyItemId", id);
+			riskItem_unmodify=riskItemBusiness.getRiskById(id);
+			return SUCCESS;
+			
+		}
+		
+		//更新风险条目，把界面修改后的条目更新到数据库
+		public String updateRiskItem(){
+			riskItem_unmodify.setContent(riskItem_hasmodify.getContent());
+			riskItem_unmodify.setEffects(riskItem_hasmodify.getEffects());
+			riskItem_unmodify.setProbability(riskItem_hasmodify.getProbability());
+			riskItem_unmodify.setThreshold(riskItem_hasmodify.getThreshold());
+			riskItemBusiness.modifyRiskItem(riskItem_unmodify);
+			return SUCCESS;
+					
+			}
 }
