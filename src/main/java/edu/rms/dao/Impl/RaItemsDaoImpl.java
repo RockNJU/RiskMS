@@ -25,7 +25,7 @@ public class RaItemsDaoImpl implements RaItemsDao{
 		
 		try {
 			Session session = baseDao.getNewSession();
-			String hql = "from edu.rms.model.RaList as r where r.ra_id = '"+raid+"'";
+			String hql = "from edu.rms.model.RaItems as r where r.ra_id = '"+raid+"'";
 			Query query=session.createQuery(hql);
 			List<RaItems> ms=query.list();
 			session.flush();
@@ -44,8 +44,22 @@ public class RaItemsDaoImpl implements RaItemsDao{
 		
 		try {
 			int size=baseDao.getAllList(RaItems.class).size();
-			ra.setRaItem_id(size+1);
-				
+			if(size==0){
+				ra.setRaItems_id(size+1);
+			}else{
+				Session session = baseDao.getNewSession();
+				String hql = "from edu.rms.model.RaItems as r order by raItems_id desc";
+				Query query=session.createQuery(hql);
+				List<RaItems> ms=query.list();
+				session.flush();
+				session.clear();
+				session.close();
+				if(ms.isEmpty())return null;
+				else{
+					ra.setRaItems_id(ms.get(0).getRaItems_id()+1);
+				}
+			}
+			
 			baseDao.save(ra);
 			return "success";
 		}catch (Exception e) {			

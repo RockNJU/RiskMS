@@ -187,6 +187,7 @@ public class RaListAction extends BaseAction{
 	public String addRaList(){
 		//保存ralist
 		int newid=ralistbusiness.getAll().size()+1;
+		System.out.println(newid);
 		String re=ralistbusiness.save(add_ralist);
 		String reforitem="success";
 		tempIdList=(List<String>)session.get("tempItemId");
@@ -195,8 +196,8 @@ public class RaListAction extends BaseAction{
 			RaItems a=new RaItems();
 			
 			for(int i=0;i<tempIdList.size();i++){
-				a.setRaItem_id(Integer.parseInt(tempIdList.get(i)));
-				a.setRiskItem_id(newid);
+				a.setRiskItem_id(Integer.parseInt(tempIdList.get(i)));
+				a.setRa_id(newid);
 				String te=raitemsbusiness.save(a);
 				if(!te.equals("success")){
 					reforitem=te;

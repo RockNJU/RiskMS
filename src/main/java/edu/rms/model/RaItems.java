@@ -9,16 +9,17 @@ import javax.persistence.Table;
 public class RaItems {
 	
 	@Id
-	private int raItem_id;
+	private int raItems_id;
 	private int ra_id;
 	private int riskItem_id;
 	
 	
-	public int getRaItem_id() {
-		return raItem_id;
+	
+	public int getRaItems_id() {
+		return raItems_id;
 	}
-	public void setRaItem_id(int raItem_id) {
-		this.raItem_id = raItem_id;
+	public void setRaItems_id(int raItems_id) {
+		this.raItems_id = raItems_id;
 	}
 	public int getRa_id() {
 		return ra_id;
