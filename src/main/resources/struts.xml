@@ -119,6 +119,19 @@
 		<action name="addNewRA" class="edu.rms.action.RaListAction" method="addRaList">
 			<result name="success">/user/raList.jsp</result>
 		</action>
+		
+		<action name="statis" class="edu.rms.action.StatisAction" method="riskStatis">
+			<result name="success">/user/statis.jsp</result>
+		</action>
+		
+		<action name="statisRegTime" class="edu.rms.action.StatisAction" method="regStatisWithTime">
+			<result name="success">/user/statis.jsp</result>
+		</action>
+		
+				
+		<action name="statisProTime" class="edu.rms.action.StatisAction" method="proStatisWithTime">
+			<result name="success">/user/statis.jsp</result>
+		</action>
 </package>
 </struts>
 
