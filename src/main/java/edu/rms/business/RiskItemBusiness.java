@@ -2,6 +2,7 @@ package edu.rms.business;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -24,4 +25,12 @@ public interface RiskItemBusiness {
 	public List<RiskItem> getRiskItemByReg(String beginTime, String endTime);
 
 	public List<RiskItem> getRiskItemByPro(String beginTime, String endTime);
+
+	public Map<String, Integer> getRiskOrderByReg();
+
+	public Map<String, Integer> getRiskOrderByPro();
+
+	public Map<String, Integer> getRiskOrderByRegTime(String beginTime, String endTime);
+
+	public Map<String, Integer> getRiskOrderByProTime(String beginTime, String endTime);
 }

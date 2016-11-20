@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -167,5 +169,97 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Map<String, Integer> getRiskOrderByReg() {
+		List<String> str=rDao.getRecTimesNoTime();
+		Map<String, Integer> re=new HashMap<String, Integer>();
+		if(str==null){
+			return null;
+		}else{
+			String temp[];
+			RiskItem ri=new RiskItem();
+			for(int i=0;i<str.size();i++){
+				temp=str.get(i).split(";");//id+cishu
+				ri=riskItemDao.getRiskById(temp[0]);
+				re.put(ri.getContent(), Integer.parseInt(temp[1]));
+			}
+		
+			return re;
+		}
+	}
+
+	@Override
+	public Map<String, Integer> getRiskOrderByPro() {
+		List<String> str=rDao.getProblemNoTime();
+		Map<String, Integer> re=new HashMap<String, Integer>();
+		if(str==null){
+			return null;
+		}else{
+			String temp[];
+			RiskItem ri=new RiskItem();
+			for(int i=0;i<str.size();i++){
+				temp=str.get(i).split(";");//id+cishu
+				ri=riskItemDao.getRiskById(temp[0]);
+				re.put(ri.getContent(), Integer.parseInt(temp[1]));
+			}
+		
+			return re;
+		}
+	}
+
+	@Override
+	public Map<String, Integer> getRiskOrderByRegTime(String beginTime, String endTime) {
+		boolean dateType=valiDateTimeWithLongFormat(beginTime);	
+		List<String> str=new ArrayList<String>();
+		if(!dateType){
+			str=rDao.getRecTimesNoTime();
+		}else{
+			str=rDao.getRecTimes(beginTime, endTime);
+		}
+		
+		
+		Map<String, Integer> re=new HashMap<String, Integer>();
+		if(str==null){
+			return null;
+		}else{
+			String temp[];
+			RiskItem ri=new RiskItem();
+			for(int i=0;i<str.size();i++){
+				temp=str.get(i).split(";");//id+cishu
+				ri=riskItemDao.getRiskById(temp[0]);
+				re.put(ri.getContent(), Integer.parseInt(temp[1]));
+			}
+		
+			return re;
+		}
+	}
+
+	@Override
+	public Map<String, Integer> getRiskOrderByProTime(String beginTime, String endTime) {
+		boolean dateType=valiDateTimeWithLongFormat(beginTime);	
+		List<String> str=new ArrayList<String>();
+		if(!dateType){
+			str=rDao.getProblemNoTime();
+		}else{
+			str=rDao.getProblemTimes(beginTime, endTime);
+		}
+		
+		
+		Map<String, Integer> re=new HashMap<String, Integer>();
+		if(str==null){
+			return null;
+		}else{
+			String temp[];
+			RiskItem ri=new RiskItem();
+			for(int i=0;i<str.size();i++){
+				temp=str.get(i).split(";");//id+cishu
+				ri=riskItemDao.getRiskById(temp[0]);
+				re.put(ri.getContent(), Integer.parseInt(temp[1]));
+			}
+		
+			return re;
+		}
 	}
 }
