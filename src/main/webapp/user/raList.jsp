@@ -78,7 +78,7 @@
 
 
 
- 	<s:form id="form1" action="/admin/sortItem" method="post" cssClass="am-form">
+ 	<s:form id="form1" method="post" cssClass="am-form">
  	<p style="color：blue;font-weight:bold;font-size:16px">风险条目列表</p><br>
  	<table id="tab" class="am-table am-table-striped am-table-hover table-main">
  	<tr>
@@ -104,9 +104,9 @@
 			  });
 			</script>
 			</td>
- 	<td><s:submit theme="simple" action="/admin/sortReg" value="被识别最多" /></td>
- 	<td><s:submit theme="simple" action="/admin/sortPro" value="变问题最多" /></td>
- 	<td><s:submit theme="simple" value="所有风险条目"/></td>
+ 	<td><s:submit theme="simple" action="/admin/sortItem?bt=#beginTime&et=#endTime" method="getItemByReg"  value="被识别最多" /></td>
+ 	<td><s:submit theme="simple" method="getItemByPro"  value="变问题最多" /></td>
+ 	<td><s:submit theme="simple" method="getAllItem" value="所有风险条目"/></td>
     </tr>
     </table>
    </s:form>

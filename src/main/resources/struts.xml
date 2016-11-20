@@ -91,7 +91,7 @@
 		
 		
 		<!--#######################RA################################## -->
-		<action name="showAllRA" class="edu.rms.action.RaListAction" method="getAllralist">
+		<action name="showAllRA" class="edu.rms.action.RaListAction" method="getAllRAlist">
 			<result name="success">/user/raList.jsp</result>
 		</action>
 		
@@ -103,17 +103,18 @@
 			<result name="success">/user/raList.jsp</result>
 		</action>
 		
-		<action name="sortItem" class="edu.rms.action.RaListAction" method="getAllItem">
+		<action name="sortItem" class="edu.rms.action.RaListAction">
 			<result name="success">/user/raList.jsp</result>
 		</action>
-		
+		<!-- 
 		<action name="sortReg" class="edu.rms.action.RaListAction" method="getItemByReg">
 			<result name="success">/user/raList.jsp</result>
 		</action>
-		
+	
 		<action name="sortPro" class="edu.rms.action.RaListAction" method="getItemByPro">
 			<result name="success">/user/raList.jsp</result>
 		</action>
+		 -->	
 		
 		<action name="addNewRA" class="edu.rms.action.RaListAction" method="addRaList">
 			<result name="success">/user/raList.jsp</result>

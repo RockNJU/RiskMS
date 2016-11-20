@@ -50,18 +50,7 @@ public class RaListAction extends BaseAction{
 	//查询到的转变成问题最多的风险条目的信息
 	private Timestamp beginTime;
 	private Timestamp endTime;
-	private String sortType;  //1按识别最多 2按问题最多 3所有
 	
-	
-	
-
-	public String getSortType() {
-		return sortType;
-	}
-
-	public void setSortType(String sortType) {
-		this.sortType = sortType;
-	}
 
 	public List<RiskItem> getSelectedItemList() {
 		return selectedItemList;
@@ -98,7 +87,7 @@ public class RaListAction extends BaseAction{
 	public int getRalist_id() {
 		return ralist_id;
 	}
-
+	
 	public List<RiskItem> getOptionalItemList() {
 		return optionalItemList;
 	}
@@ -131,11 +120,13 @@ public class RaListAction extends BaseAction{
 	public void setAllralist(List<RaList> allralist) {
 		this.allralist = allralist;
 	}
-
+	public List<RaList> getAllralist() {
+		return allralist;
+	}
 	
 	/*---start all method----*/
 	
-	public String getAllralist(){
+	public String getAllRAlist(){
 		allralist=ralistbusiness.getAll();
 		for(int i=0;i<allralist.size();i++){
 			System.out.println("get id "+allralist.get(i).getRa_id()+" "+allralist.get(i).getRa_name());
@@ -162,7 +153,8 @@ public class RaListAction extends BaseAction{
 		}
 		
 		session.put("optionList", optionalItemList);
-		return refreshTempItemListTable();
+		refreshTempItemListTable();
+		return SUCCESS;
 	}
 	
 	public String getItemByPro(){
@@ -172,13 +164,15 @@ public class RaListAction extends BaseAction{
 			System.out.println("dasdadad"+optionalItemList.get(i).getRiskItem_id());
 		}
 		session.put("optionList", optionalItemList);
-		return refreshTempItemListTable(); 
+		refreshTempItemListTable();
+		return SUCCESS;
 	}
 	
 	public String getAllItem(){
 		optionalItemList = riskitembusiness.getAllRiskItem();
 		session.put("optionList", optionalItemList);
-		return refreshTempItemListTable(); 
+		refreshTempItemListTable();
+		return SUCCESS;
 	}
 	
 	public String getOneRiskAllItems(){
@@ -214,7 +208,8 @@ public class RaListAction extends BaseAction{
 		if(reforitem.equals("success")){
 			tempIdList.clear();
 			allralist=ralistbusiness.getAll();
-			return refreshTempItemListTable();
+			refreshTempItemListTable();
+			return SUCCESS;
 		}else{
 			return INPUT;
 		}
@@ -229,7 +224,8 @@ public class RaListAction extends BaseAction{
 			tempIdList.add(id);
 			session.put("tempItemId", tempIdList);
 		}
-		return refreshTempItemListTable();
+		refreshTempItemListTable();
+		return SUCCESS;
 		
 	}
 	
@@ -238,14 +234,14 @@ public class RaListAction extends BaseAction{
 		tempIdList=(List<String>)session.get("tempItemId");
 		tempIdList.remove(id);
 		session.put("tempItemId", tempIdList);
-		return refreshTempItemListTable();
+		refreshTempItemListTable();
+		return SUCCESS;
 		
 	}
 
-	private String refreshTempItemListTable() {
+	private void refreshTempItemListTable() {
 		selectedItemList=riskitembusiness.getItemListByIdList((List<String>)session.get("tempItemId"));
 		optionalItemList = (List<RiskItem>)session.get("optionList");
-		return SUCCESS;
 	}
 	
 	
