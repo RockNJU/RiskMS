@@ -12,6 +12,7 @@ import edu.rms.dao.BaseDao;
 import edu.rms.dao.RaListDao;
 import edu.rms.model.RaItems;
 import edu.rms.model.RaList;
+import edu.rms.model.RiskItem;
 import edu.rms.model.RiskStateTrack;
 
 @Repository
@@ -80,6 +81,35 @@ public class RaListDaoImpl implements RaListDao {
 			return "false";
 		}
 		
+	}
+
+
+	@Override
+	public RaList getRAbyId(int id) {
+		try {
+			Session session = baseDao.getNewSession();
+			String hql = "from edu.rms.model.RaList as r where r.ra_id = '"+id+"'";
+			Query query=session.createQuery(hql);
+			List<RaList> ms=query.list();
+			session.flush();
+			session.clear();
+			session.close();
+			if(ms.isEmpty())return null;
+			return ms.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public void update(RaList risk) {
+		// TODO Auto-generated method stub
+		try {
+			baseDao.update(risk);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

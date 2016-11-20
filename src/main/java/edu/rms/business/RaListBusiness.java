@@ -14,4 +14,10 @@ public interface RaListBusiness {
 
 
 	public void deleteRA(int id);
+
+
+	public RaList getRAbyId(int id);
+
+
+	public void updateRAbyId(int ra_id, String ra_name, List<String> itemList);
 }

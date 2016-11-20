@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import edu.rms.business.RaListBusiness;
 import edu.rms.dao.RaItemsDao;
 import edu.rms.dao.RaListDao;
+import edu.rms.model.RaItems;
 import edu.rms.model.RaList;
 
 @Service
@@ -35,6 +36,27 @@ public class RaListBusinessImpl implements RaListBusiness{
 		radao.delete(id);
 		rDao.delete(id);
 		
+	}
+
+	@Override
+	public RaList getRAbyId(int id) {
+		// TODO Auto-generated method stub
+		return radao.getRAbyId(id);
+	}
+
+	@Override
+	public void updateRAbyId(int ra_id, String ra_name, List<String> itemList) {
+		// TODO Auto-generated method stub
+		RaList ralist=radao.getRAbyId(ra_id);
+		ralist.setRa_name(ra_name);
+		radao.update(ralist);
+		rDao.delete(ra_id);
+		RaItems ri=new RaItems();
+		for(int i=0;i<itemList.size();i++){
+			ri.setRiskItem_id(Integer.parseInt(itemList.get(i)));
+			ri.setRa_id(ra_id);
+			rDao.save(ri);
+		}
 	}
 
 }

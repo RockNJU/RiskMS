@@ -11,5 +11,9 @@ public interface RaListDao {
 	public String save(RaList ra);
 
 	public String delete(int raid);
+
+	public RaList getRAbyId(int id);
+
+	public void update(RaList ra);
 	
 }

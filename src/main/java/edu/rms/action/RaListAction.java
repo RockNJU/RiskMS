@@ -169,7 +169,7 @@ public class RaListAction extends BaseAction{
 	}
 	
 	public String getOneRiskAllItems(){
-		List<RaItems> temp=raitemsbusiness.getOneRAItems(ralist_id);
+		List<RaItems> temp=raitemsbusiness.getOneRaItems(ralist_id);
 		riskitem.clear();
 		for(int i=0;i<temp.size();i++){
 			riskitem.add(riskitembusiness.getRiskById(String.valueOf(temp.get(i).getRiskItem_id())));
@@ -247,7 +247,8 @@ public class RaListAction extends BaseAction{
 	
 	public String getRAtoModify(){
 		int id = Integer.parseInt(req.getParameter("raId"));
-		List<String> itemIdList = riskitembusiness.getItemIdListByRAId(id);
+		List<String> itemIdList = raitemsbusiness.getOneRAItems(id);
+		
 		session.put("tempItemId", itemIdList);
 		unmodifyRA = ralistbusiness.getRAbyId(id);
 		
@@ -257,7 +258,7 @@ public class RaListAction extends BaseAction{
 	public String updateRAtoModify(){
 		List<String> itemList = (List<String>)session.get("tempItemId");
 		//三个参数分别为  要更新的RA的id  修改的name和条目列表的条目id
-		unmodifyRA = ralistbusiness.getRAbyId(unmodifyRA.getRa_id(),hasmodifyRA.getRa_name(),itemList);
+		 ralistbusiness.updateRAbyId(unmodifyRA.getRa_id(),hasmodifyRA.getRa_name(),itemList);
 		return SUCCESS;
 	}
 	
