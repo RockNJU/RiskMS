@@ -10,5 +10,5 @@ public interface RaItemsBusiness {
 	
 	public String save(RaItems raitem);
 	
-	public String remove(RaItems raitem);
+	
 }

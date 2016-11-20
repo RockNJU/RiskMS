@@ -262,4 +262,10 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 			return re;
 		}
 	}
+
+	@Override
+	public void modifyRiskItem(RiskItem risk) {
+		// TODO Auto-generated method stub
+		riskItemDao.update(risk);
+	}
 }

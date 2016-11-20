@@ -81,6 +81,18 @@ public class RiskItemDaoImpl implements RiskItemDao{
 		}
 	}
 
+
+
+	@Override
+	public void update(RiskItem risk) {
+		// TODO Auto-generated method stub
+		try {
+			baseDao.update(risk);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 
 }

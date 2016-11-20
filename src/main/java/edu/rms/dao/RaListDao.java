@@ -9,5 +9,7 @@ public interface RaListDao {
 	public List<RaList> getAll();
 	
 	public String save(RaList ra);
+
+	public String delete(int raid);
 	
 }

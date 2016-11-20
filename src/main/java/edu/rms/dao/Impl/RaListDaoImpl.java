@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.rms.dao.BaseDao;
 import edu.rms.dao.RaListDao;
+import edu.rms.model.RaItems;
 import edu.rms.model.RaList;
 import edu.rms.model.RiskStateTrack;
 
@@ -38,15 +39,47 @@ public class RaListDaoImpl implements RaListDao {
 		
 		try {
 			int size=baseDao.getAllList(RaList.class).size();
-			ra.setRa_id(size+1);
-			ra.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			if(size==0){
+				ra.setRa_id(size+1);
+			}else{
+				Session session = baseDao.getNewSession();
+				String hql = "from edu.rms.model.RaList as r order by ra_id desc";
+				Query query=session.createQuery(hql);
+				List<RaList> ms=query.list();
+				session.flush();
+				session.clear();
+				session.close();
+				if(ms.isEmpty())return null;
+				else{
+					ra.setRa_id(ms.get(0).getRa_id()+1);
+				}
+				
+			}
 			baseDao.save(ra);
-			return "新增计划成功";
+			return "success";
 		}catch (Exception e) {			
 			e.printStackTrace();
 			return "计划新增失败";
 		}
 	}
-
+	@Override
+	public String delete(int raid) {
+		
+		try {
+			Session session = baseDao.getNewSession();
+			
+			String hql = "delete from edu.rms.model.RaList where ra_id = '"+raid+"'";
+			Query query=session.createQuery(hql);
+			session.flush();
+			session.clear();
+			session.close();
+			
+			return "success";
+		}catch (Exception e) {			
+			e.printStackTrace();	
+			return "false";
+		}
+		
+	}
 	
 }

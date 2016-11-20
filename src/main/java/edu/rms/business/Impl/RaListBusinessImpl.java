@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.rms.business.RaListBusiness;
+import edu.rms.dao.RaItemsDao;
 import edu.rms.dao.RaListDao;
 import edu.rms.model.RaList;
 
@@ -14,6 +15,9 @@ public class RaListBusinessImpl implements RaListBusiness{
 
 	@Autowired
 	private RaListDao radao;
+	
+	@Autowired
+	private RaItemsDao rDao;
 	
 	@Override
 	public List<RaList> getAll() {
@@ -24,6 +28,13 @@ public class RaListBusinessImpl implements RaListBusiness{
 	public String save(RaList ra) {
 		
 		return radao.save(ra);
+	}
+
+	@Override
+	public void deleteRA(int id) {
+		radao.delete(id);
+		rDao.delete(id);
+		
 	}
 
 }

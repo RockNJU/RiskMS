@@ -13,4 +13,6 @@ public interface RiskItemDao {
 	public List<RiskItem> findbykey(String key);
 	
 	public RiskItem getRiskById(String id);
+
+	public void update(RiskItem risk);
 }

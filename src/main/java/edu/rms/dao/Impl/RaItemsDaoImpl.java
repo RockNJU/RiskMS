@@ -70,10 +70,17 @@ public class RaItemsDaoImpl implements RaItemsDao{
 	}
 
 	@Override
-	public String remove(RaItems ra) {
+	public String delete(int ra_id) {
 		
 		try {
-			baseDao.delete(ra);
+            Session session = baseDao.getNewSession();
+			
+			String hql = "delete from edu.rms.model.RaItems where ra_id = '"+ra_id+"'";
+			Query query=session.createQuery(hql);
+			session.flush();
+			session.clear();
+			session.close();
+			
 			return "success";
 		}catch (Exception e) {			
 			e.printStackTrace();	

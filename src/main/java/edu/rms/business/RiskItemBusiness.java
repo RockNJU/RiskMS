@@ -33,4 +33,6 @@ public interface RiskItemBusiness {
 	public Map<String, Integer> getRiskOrderByRegTime(String beginTime, String endTime);
 
 	public Map<String, Integer> getRiskOrderByProTime(String beginTime, String endTime);
+
+	public void modifyRiskItem(RiskItem riskItem_unmodify);
 }

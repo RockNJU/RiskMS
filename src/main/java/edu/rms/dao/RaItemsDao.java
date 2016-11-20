@@ -10,7 +10,8 @@ public interface RaItemsDao {
 	
 	public String save(RaItems ra);
 	
-	public String remove(RaItems ra);
+	
+	public String delete(int ra_id);
 	
 	
 }

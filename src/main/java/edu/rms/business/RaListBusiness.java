@@ -11,4 +11,7 @@ public interface RaListBusiness {
 	
 	
 	public String save(RaList ra);
+
+
+	public void deleteRA(int id);
 }
