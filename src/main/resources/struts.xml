@@ -168,7 +168,7 @@
 		</action>
 		
 		<action name="delRAItem" class="edu.rms.action.RaListAction" method="deleteRA">
-			<result name="success" >showAllRA</result>
+			<result name="success" >/user/raList.jsp</result>
 		</action>
 		
 		<action name="updateRA" class="edu.rms.action.RaListAction" method="updateRAtoModify">

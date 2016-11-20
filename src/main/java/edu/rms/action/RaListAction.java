@@ -214,6 +214,9 @@ public class RaListAction extends BaseAction{
 	public String addTempItemId(){
 		String id = (String)(req.getParameter("addTempItemId"));
 		tempIdList=(List<String>)session.get("tempItemId");
+		if(tempIdList==null){
+			tempIdList = new ArrayList<String>();
+		}
 		if(tempIdList.indexOf(id)==-1){
 			tempIdList.add(id);
 			session.put("tempItemId", tempIdList);
@@ -242,6 +245,14 @@ public class RaListAction extends BaseAction{
 	public String deleteRA(){
 		int id = Integer.parseInt(req.getParameter("raId"));
 		ralistbusiness.deleteRA(id);
+		
+		allralist=ralistbusiness.getAll();
+		optionalItemList = riskitembusiness.getAllRiskItem();
+		session.put("optionList", optionalItemList);
+		if(tempIdList==null){
+			tempIdList = new ArrayList<String>();
+			session.put("tempItemId", tempIdList);
+		}
 		return SUCCESS;
 	}
 	
