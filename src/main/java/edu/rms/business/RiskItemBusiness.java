@@ -21,7 +21,7 @@ public interface RiskItemBusiness {
 
 	public List<RiskItem> getItemListByIdList(List<String> tempIdList);
 
-	public List<RiskItem> getRiskItemByReg(Timestamp beginTime, Timestamp endTime);
+	public List<RiskItem> getRiskItemByReg(String beginTime, String endTime);
 
-	public List<RiskItem> getRiskItemByPro(Timestamp beginTime, Timestamp endTime);
+	public List<RiskItem> getRiskItemByPro(String beginTime, String endTime);
 }

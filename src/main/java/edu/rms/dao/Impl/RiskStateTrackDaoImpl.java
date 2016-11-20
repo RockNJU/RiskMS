@@ -59,9 +59,9 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 		try {
 			Session session = baseDao.getNewSession();
 			
-			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
+			String hql = "Select count(*) as num,riskItemId from edu.rms.model.RiskStateTrack "+ 
                           "where createTime between '"+time1+"' and '"+time2+
-                          "' and state = 0 group by riskitemId ORDER BY num DESC' ";
+                          "' and state = 0 group by riskItemId ORDER BY num DESC ";
 			Query query=session.createQuery(hql);
 			List list=query.list();
 			List<String> re=new ArrayList<String>();
@@ -89,9 +89,9 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 		try {
 			Session session = baseDao.getNewSession();
 			
-			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
+			String hql = "Select count(*) as num,riskItemId from edu.rms.model.RiskStateTrack "+ 
                           "where createTime between '"+time1+"' and '"+time2+
-                          "' and state = 1 group by riskitemId ORDER BY num DESC' ";
+                          "' and state = 1 group by riskItemId ORDER BY num DESC ";
 			Query query=session.createQuery(hql);
 			List list=query.list();
 			List<String> re=new ArrayList<String>();
@@ -137,10 +137,11 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 		try {
 			Session session = baseDao.getNewSession();
 			
-			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
-                          "where state = 0 group by riskitemId ORDER BY num DESC' ";
+			String hql = "Select count(*) as num,riskItemId from edu.rms.model.RiskStateTrack "+ 
+                          "where state = 0 group by riskItemId ORDER BY num DESC ";
 			Query query=session.createQuery(hql);
 			List list=query.list();
+			System.out.println("listshibushinull"+list==null);
 			List<String> re=new ArrayList<String>();
 			String temp="";
 			for(int i = 0; i <list.size();i++) {
@@ -153,6 +154,7 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 			session.flush();
 			session.clear();
 			session.close();
+			System.out.println("reshibus"+re==null);
 			if(re.isEmpty())return null;
 			return re;
 		}catch (Exception e) {			
@@ -166,8 +168,8 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 		try {
 			Session session = baseDao.getNewSession();
 			
-			String hql = "Select count(*) as num,riskitemId from riskstatetrack"+ 
-                          "where state = 1 group by riskitemId ORDER BY num DESC' ";
+			String hql = " Select count(*) as num,riskItemId from edu.rms.model.RiskStateTrack "+ 
+                          "where state = 1 group by riskItemId ORDER BY num DESC ";
 			Query query=session.createQuery(hql);
 			List list=query.list();
 			List<String> re=new ArrayList<String>();

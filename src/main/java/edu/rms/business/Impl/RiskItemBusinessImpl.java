@@ -1,7 +1,12 @@
 package edu.rms.business.Impl;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -87,46 +92,39 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 	public List<RiskItem> getRiskItemByReg(String beginTime, String endTime) {
 		
 		List<String> re;
-		
-		String rexp = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
-		
-		Pattern pat = Pattern.compile(rexp);  
-		
-		Matcher mat = pat.matcher(beginTime);  
-		
-		boolean dateType = mat.matches();
+		boolean dateType=valiDateTimeWithLongFormat(beginTime);		
 		if(!dateType){
+			
 			re=rDao.getRecTimesNoTime();
 		}else{
+			
 			re=rDao.getRecTimes(beginTime, endTime);
 		}
+		
 		String[] temp;
 		List<RiskItem> result=new ArrayList<RiskItem>();
 		System.out.println("shuchu"+beginTime+" "+endTime);
-		if(result==null){
+		if(re==null){
 			System.out.println("nullle");
-			return result;
+			return null;
 		}else{
+			
 		for(int i=0;i<re.size();i++){
 			temp=re.get(i).split(";");
-			System.out.println("adale"+result.size());
+			
 			result.add(riskItemDao.getRiskById(temp[0]));
 		}
+		System.out.println("查询到的size"+result.size());
 		return result;
 		}
+		
+		
 	}
 
 	@Override
 	public List<RiskItem> getRiskItemByPro(String beginTime, String endTime) {
-        List<String> re;
-		
-		String rexp = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
-		
-		Pattern pat = Pattern.compile(rexp);  
-		
-		Matcher mat = pat.matcher(beginTime);  
-		
-		boolean dateType = mat.matches();
+		List<String> re;
+		boolean dateType=valiDateTimeWithLongFormat(beginTime);	
 		if(!dateType){
 			re=rDao.getProblemNoTime();
 		}else{
@@ -134,8 +132,8 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 		}
 		String[] temp;
 		List<RiskItem> result=new ArrayList<RiskItem>();
-		if(result==null){
-			return result;
+		if(re==null){
+			return null;
 		}else{
 		for(int i=0;i<re.size();i++){
 			temp=re.get(i).split(";");
@@ -143,6 +141,31 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 		}
 		return result;
 		}
+		
 	}
 
+	
+	private static boolean valiDateTimeWithLongFormat(String timeStr) {
+		String format = "((19|20)[0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01]) "
+				+ "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+		Pattern pattern = Pattern.compile(format);
+		Matcher matcher = pattern.matcher(timeStr);
+		if (matcher.matches()) {
+			pattern = Pattern.compile("(\\d{4})-(\\d+)-(\\d+).*");
+			matcher = pattern.matcher(timeStr);
+			if (matcher.matches()) {
+				int y = Integer.valueOf(matcher.group(1));
+				int m = Integer.valueOf(matcher.group(2));
+				int d = Integer.valueOf(matcher.group(3));
+				if (d > 28) {
+					Calendar c = Calendar.getInstance();
+					c.set(y, m-1, 1);
+					int lastDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+					return (lastDay >= d);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
 }

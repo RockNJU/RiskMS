@@ -123,10 +123,8 @@ public class RaListAction extends BaseAction{
 		String beginTime = (String)(req.getParameter("bt"));
 		String endTime = (String)(req.getParameter("et"));
 		optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
-		System.out.println(beginTime+"  dadadaf   "+endTime);
-		for(int i=0;i<optionalItemList.size();i++){
-			System.out.println("dasdadad"+optionalItemList.get(i).getRiskItem_id());
-		}
+		System.out.println(beginTime+"  dadadaf   "+endTime+" "+optionalItemList==null);
+		
 		
 		session.put("optionList", optionalItemList);
 		refreshTempItemListTable();
@@ -137,10 +135,7 @@ public class RaListAction extends BaseAction{
 		String beginTime = (String)(req.getParameter("bt"));
 		String endTime = (String)(req.getParameter("et"));
 		optionalItemList = riskitembusiness.getRiskItemByPro(beginTime,endTime);
-		System.out.println(beginTime+"  dadadaf   "+endTime);
-		for(int i=0;i<optionalItemList.size();i++){
-			System.out.println("dasdadad"+optionalItemList.get(i).getRiskItem_id());
-		}
+		
 		session.put("optionList", optionalItemList);
 		refreshTempItemListTable();
 		return SUCCESS;
