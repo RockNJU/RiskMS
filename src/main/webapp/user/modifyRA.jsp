@@ -81,13 +81,12 @@
   <!-- content start -->
   <div class="admin-content">		
 	<div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">风险计划管理</strong> <small></small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">风险计划修改/查看</strong> <small></small></div>
     </div>
     
 <div class="am-tabs am-margin" data-am-tabs>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="#tab1">新增风险计划</a></li>
-      <li><a href="#tab2">所有风险计划</a></li>
+      <li class="am-active"><a href="#tab1">修改风险计划</a></li>
     </ul>
     
      <div class="am-tabs-bd">
@@ -183,7 +182,8 @@
     
     <!-- 第二个表单开始#################### -->
     
-     	<s:form id="form2" action="/admin/addNewRA" method="post" cssClass="am-form">
+     	<s:form id="form2" action="/admin/updateRA" method="post" cssClass="am-form">
+     	 <s:param name="raId"><s:property  value="unmodifyRA.ra_id"/></s:param>
  	<p style="color：blue;font-weight:bold;font-size:16px">已选条目列表</p><br>
 
         <table id="table2" class="am-table am-table-striped am-table-hover table-main">
@@ -238,9 +238,9 @@
      </tr>
      </s:iterator>
       </table>
-      <td><s:textfield name="add_ralist.ra_name" label="计划名称" required="required"/></td>
+      <td><s:textfield name="hasmodifyRA.ra_name" value="unmodifyRA.ra_name" label="计划名称" required="required"/></td>
       <td align="center">
-          <s:submit value="提交计划" cssClass="am-btn am-btn-block am-btn-primary"/>
+          <s:submit value="提交修改" cssClass="am-btn am-btn-block am-btn-primary"/>
           </td>
        
     </s:form>
@@ -249,65 +249,6 @@
       </div>
       </div>
 
-
-      <div class="am-tab-panel am-fade" id="tab2">
-      <div class="am-g">
-      <div class="am-u-sm-12">
-      
-       <table class="am-table am-table-striped am-table-hover table-main">
-      <tr>
-      <th style="background: #C2F1E2">风险计划编号</th>
-      <th style="background: #C2F1E2">风险计划内容</th>
-      <th style="background: #C2F1E2">创建时间</th>
-      <th style="background: #C2F1E2">条目列表</th>
-      <th style="background: #C2F1E2">操作</th>
-      </tr>
-      
-           <s:iterator id="s3" value="allralist" status="scdsStatus">
-     <tr>
-       <td><s:property value="ra_id"/></td>
-       <td><s:property value="ra_name"/></td>
-       <td><s:property value="createTime"/></td>
-       
-       <s:set var="ra" value="#s3" scope="session"></s:set>
-		  <td>
-		  
-		  <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <s:url action="showRAItemList" var="p">
-			    <s:param name="raId"><s:property  value="ra_id"/></s:param>
-			</s:url>
-                    <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>查看</s:a>
-         
-                  </div>
-                </div>
-		  
-		   </td>
-		    <td>
-		  
-		  <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <s:url action="delRAItem" var="p">
-			    <s:param name="raId"><s:property  value="ra_id"/></s:param>
-			</s:url>
-                    <s:a href="%{p}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>删除</s:a>
-         
-                  </div>
-                </div>
-		  
-		   </td>
-      
-     </tr>
-     </s:iterator>
-      </table>
-      
-      
-      </div>
-      </div>
-     
-      </div>
-
- 
       </div>
     </div>
 

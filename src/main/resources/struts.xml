@@ -143,12 +143,16 @@
 			</result>
 		</action>
 		
-		<action name="showRAItemList" class="edu.rms.action.RaListAction" method="updateRiskItem">
+		<action name="showRAItemList" class="edu.rms.action.RaListAction" method="getRAtoModify">
 			<result name="success" >modifyRA.jsp</result>
 		</action>
 		
 		<action name="delRAItem" class="edu.rms.action.RaListAction" method="deleteRA">
 			<result name="success" >showAllRA</result>
+		</action>
+		
+		<action name="updateRA" class="edu.rms.action.RaListAction" method="updateRAtoModify">
+			<result name="success" >showRAItemList</result>
 		</action>
 </package>
 </struts>

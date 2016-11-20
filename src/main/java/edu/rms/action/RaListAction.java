@@ -48,6 +48,26 @@ public class RaListAction extends BaseAction{
 	//我觉得这个需要看界面是怎么要的
 	//查询到的被识别最多的风险条目的信息
 	//查询到的转变成问题最多的风险条目的信息
+	private RaList unmodifyRA;
+	private RaList hasmodifyRA;
+
+	
+	
+	public RaList getUnmodifyRA() {
+		return unmodifyRA;
+	}
+
+	public void setUnmodifyRA(RaList unmodifyRA) {
+		this.unmodifyRA = unmodifyRA;
+	}
+
+	public RaList getHasmodifyRA() {
+		return hasmodifyRA;
+	}
+
+	public void setHasmodifyRA(RaList hasmodifyRA) {
+		this.hasmodifyRA = hasmodifyRA;
+	}
 
 	public List<RiskItem> getSelectedItemList() {
 		return selectedItemList;
@@ -225,5 +245,20 @@ public class RaListAction extends BaseAction{
 		return SUCCESS;
 	}
 	
+	public String getRAtoModify(){
+		int id = Integer.parseInt(req.getParameter("raId"));
+		List<String> itemIdList = riskitembusiness.getItemIdListByRAId(id);
+		session.put("tempItemId", itemIdList);
+		unmodifyRA = ralistbusiness.getRAbyId(id);
+		
+		return SUCCESS;
+	}
+	
+	public String updateRAtoModify(){
+		List<String> itemList = (List<String>)session.get("tempItemId");
+		//三个参数分别为  要更新的RA的id  修改的name和条目列表的条目id
+		unmodifyRA = ralistbusiness.getRAbyId(unmodifyRA.getRa_id(),hasmodifyRA.getRa_name(),itemList);
+		return SUCCESS;
+	}
 	
 }
