@@ -122,9 +122,6 @@ public class RiskStateTrackAction extends BaseAction{
 		}
 		
 		session.put("riskItem_id", riskItemId);
-		
-		System.out.println(riskItemId+"@@@@@@@@@@");
-		
 		itemStateList = riskStateTrackBusiness.getOneRiskAllStates(riskItemId);
 		return SUCCESS;
 	}
@@ -146,9 +143,7 @@ public class RiskStateTrackAction extends BaseAction{
 		riskStateTrack.setPreviousStateId(-1);
 		riskStateTrack.setRiskItemId(riskItemId);
 		riskStateTrack.setState(0);
-		
-		
-		System.out.println("我做了一次save  所属风险条目"+riskStateTrack.getRiskItemId()+"  previous"+riskStateTrack.getPreviousStateId());
+
 		String result =  riskStateTrackBusiness.save(riskStateTrack);
 		
 		if(result!=null){
@@ -175,9 +170,7 @@ public class RiskStateTrackAction extends BaseAction{
 		riskStateTrack.setPreviousStateId((Integer)session.get("previous_id"));
 		riskStateTrack.setRiskItemId((Integer)session.get("riskItem_id"));
 		riskStateTrack.setState(1);
-		System.out.println("我做了一次addproblem  所属风险条目"+riskStateTrack.getRiskItemId()+"  previous"+riskStateTrack.getPreviousStateId());
-		
-       String result =  riskStateTrackBusiness.save(riskStateTrack);
+		String result =  riskStateTrackBusiness.save(riskStateTrack);
 		
 		if(result!=null){
 			return SUCCESS;

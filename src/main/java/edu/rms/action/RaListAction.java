@@ -143,9 +143,6 @@ public class RaListAction extends BaseAction{
 		String beginTime = (String)(req.getParameter("bt"));
 		String endTime = (String)(req.getParameter("et"));
 		optionalItemList = riskitembusiness.getRiskItemByReg(beginTime,endTime);
-		System.out.println(beginTime+"  dadadaf   "+endTime+" "+optionalItemList==null);
-		
-		
 		session.put("optionList", optionalItemList);
 		refreshTempItemListTable();
 		return SUCCESS;
@@ -180,7 +177,6 @@ public class RaListAction extends BaseAction{
 	public String addRaList(){
 		//保存ralist
 		int newid=ralistbusiness.getAll().size()+1;
-		System.out.println(newid);
 		String re=ralistbusiness.save(add_ralist);
 		String reforitem="success";
 		tempIdList=(List<String>)session.get("tempItemId");
@@ -274,9 +270,7 @@ public class RaListAction extends BaseAction{
 	public String updateRAtoModify(){
 		List<String> itemList = (List<String>)session.get("tempItemId");
 		unmodifyRA = (RaList)session.get("unmodifyRA");
-		System.out.println(unmodifyRA.getRa_id()+"unmodifyRA.getRa_id()");
-		System.out.println(hasmodifyRA.getRa_name()+"hasmodifyRA.getRa_name()");
-		System.out.println(itemList==null);
+		
 		//三个参数分别为  要更新的RA的id  修改的name和条目列表的条目id
 		 ralistbusiness.updateRAbyId(unmodifyRA.getRa_id(),hasmodifyRA.getRa_name(),itemList);
 		 

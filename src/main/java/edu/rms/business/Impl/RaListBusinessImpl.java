@@ -40,13 +40,13 @@ public class RaListBusinessImpl implements RaListBusiness{
 
 	@Override
 	public RaList getRAbyId(int id) {
-		// TODO Auto-generated method stub
+		
 		return radao.getRAbyId(id);
 	}
 
 	@Override
 	public void updateRAbyId(int ra_id, String ra_name, List<String> itemList) {
-		// TODO Auto-generated method stub
+		
 		RaList ralist=radao.getRAbyId(ra_id);
 		ralist.setRa_name(ra_name);
 		radao.update(ralist);

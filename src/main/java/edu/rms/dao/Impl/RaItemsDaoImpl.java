@@ -80,7 +80,6 @@ public class RaItemsDaoImpl implements RaItemsDao{
 			Query query=session.createQuery(hql);
 			
 			query.executeUpdate();
-			System.out.println("delete"+baseDao.getAllList(RaItems.class).size());
 			session.flush();
 			session.clear();
 			session.close();

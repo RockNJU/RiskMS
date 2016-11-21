@@ -19,7 +19,6 @@ public interface UserBusiness {
 	
 	public List<User> getAllUser();
 	
-	//获得某人可�?�的跟踪�?
 	public List<User> getOptionalTrackers();
 	
 }

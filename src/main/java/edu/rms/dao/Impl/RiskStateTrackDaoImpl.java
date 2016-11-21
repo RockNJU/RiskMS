@@ -141,7 +141,6 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
                           "where state = 0 group by riskItemId ORDER BY num DESC ";
 			Query query=session.createQuery(hql);
 			List list=query.list();
-			System.out.println("listshibushinull"+list==null);
 			List<String> re=new ArrayList<String>();
 			String temp="";
 			for(int i = 0; i <list.size();i++) {
@@ -154,7 +153,6 @@ public class RiskStateTrackDaoImpl implements RiskStateTrackDao{
 			session.flush();
 			session.clear();
 			session.close();
-			System.out.println("reshibus"+re==null);
 			if(re.isEmpty())return null;
 			return re;
 		}catch (Exception e) {			

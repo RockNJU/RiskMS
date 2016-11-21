@@ -39,7 +39,7 @@ public class RaItemsBusinessImpl implements RaItemsBusiness{
 
 	@Override
 	public List<RaItems> getOneRaItems(int raid) {
-		// TODO Auto-generated method stub
+		
 		return ridao.getOneRAItems(raid);
 	}
 

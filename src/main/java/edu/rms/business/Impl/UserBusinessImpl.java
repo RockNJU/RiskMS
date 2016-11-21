@@ -43,7 +43,7 @@ public class UserBusinessImpl implements UserBusiness {
 
 	@Override
 	public List<User> getOptionalTrackers() {
-		// TODO Auto-generated method stub
+		
 		return userDao.getOptionalTracker();
 	}
 

@@ -64,7 +64,11 @@ INSERT INTO `riskstatetrack` VALUES (6, 2, 0, 'risk4   -----balabala', '2016-11-
 INSERT INTO `riskstatetrack` VALUES (7, 2, 1, 'problem4-----balabala', '2016-11-16 10:59:33', 6);
 INSERT INTO `riskstatetrack` VALUES (8, 3, 0, 'risk5   -----balabala', '2016-11-8 11:00:06', -1);
 INSERT INTO `riskstatetrack` VALUES (9, 3, 1, 'problem5-----balabala', '2016-11-17 11:00:22', 8);
-
+INSERT INTO `riskstatetrack` VALUES (10, 3, 0, 'risk6   -----balabala', '2016-11-13 11:00:22', -1);
+INSERT INTO `riskstatetrack` VALUES (11, 3, 1, 'problem6   -----balabala', '2016-11-16 11:00:22', 10);
+INSERT INTO `riskstatetrack` VALUES (12, 2, 0, 'risk7   -----balabala', '2016-11-18 16:00:22', -1);
+INSERT INTO `riskstatetrack` VALUES (13, 1, 0, 'risk8   -----balabala', '2016-11-3 13:00:22', -1);
+INSERT INTO `riskstatetrack` VALUES (14, 1, 1, 'risk8   -----balabala', '2016-11-10 23:00:22', 13);
 
 drop table if EXISTS ralist;
 

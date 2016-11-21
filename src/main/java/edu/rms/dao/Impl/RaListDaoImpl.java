@@ -104,7 +104,7 @@ public class RaListDaoImpl implements RaListDao {
 	
 	@Override
 	public void update(RaList risk) {
-		// TODO Auto-generated method stub
+		
 		try {
 			baseDao.update(risk);
 		} catch (Exception e) {

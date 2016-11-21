@@ -6,7 +6,6 @@ import edu.rms.model.RaList;
 
 public interface RaListBusiness {
 	
-	//获取所有的风险计划
 	public List<RaList> getAll();
 	
 	
