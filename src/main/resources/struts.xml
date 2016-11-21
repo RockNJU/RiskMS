@@ -138,19 +138,20 @@
 		
 		<action name="addNewRA" class="edu.rms.action.RaListAction" method="addRaList">
 			<result name="success">/user/raList.jsp</result>
+			<result name="input">/user/raList.jsp</result>
 		</action>
 		
 		<action name="statis" class="edu.rms.action.StatisAction" method="riskStatis">
 			<result name="success">/user/statis.jsp</result>
 		</action>
 		
-		<action name="statisRegTime" class="edu.rms.action.StatisAction" method="regStatisWithTime">
-			<result name="success"></result>
+		<action name="statisRegTime" class="edu.rms.action.StatisAction" method="regStatisOrder">
+			<result name="success">/user/statis.jsp</result>
 		</action>
 		
 				
-		<action name="statisProTime" class="edu.rms.action.StatisAction" method="proStatisWithTime">
-			<result name="success"></result>
+		<action name="statisProTime" class="edu.rms.action.StatisAction" method="proStatisOrder">
+			<result name="success">/user/statis.jsp</result>
 		</action>
 		
 		<action name="modifyItem" class="edu.rms.action.RiskItemAction" method="modifyRiskItem">
@@ -159,7 +160,7 @@
 		
 		<action name="updateItem" class="edu.rms.action.RiskItemAction" method="updateRiskItem">
 			<result name="success" type="chain">
-				<param name="actionName">showAllRA</param>
+				<param name="actionName">showRAItemList</param>
 			</result>
 		</action>
 		

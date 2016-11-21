@@ -25,19 +25,19 @@
 		function reg(){
 			var bt = $("#beginTime").val();
 			var et = $("#endTime").val();
-			var url="sortRegRA.action?bt="+bt+"&et="+et;
+			var url="sortReg.action?bt="+bt+"&et="+et;
 			window.location.href=url;
 		}
 		function pro(){
 			var bt = $("#beginTime").val();
 			var et = $("#endTime").val();
-			var url="sortProRA.action?bt="+bt+"&et="+et;
+			var url="sortPro.action?bt="+bt+"&et="+et;
 			window.location.href=url;
 		}
 		function all(){
 			var bt = $("#beginTime").val();
 			var et = $("#endTime").val();
-			var url="sortItemRA.action?bt="+bt+"&et="+et;
+			var url="sortItem.action?bt="+bt+"&et="+et;
 			window.location.href=url;
 		}
 		
@@ -101,7 +101,7 @@
  	<p style="color：blue;font-weight:bold;font-size:16px">风险条目列表</p><br>
  	<table id="tab" class="am-table am-table-striped am-table-hover table-main">
  	<tr>
- 	<td><input id="beginTime" name="beginTime"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
+ 	<td><input id="beginTime" name="beginTime"  size="16" type="text" value="开始时间 " class="form-datetime am-form-field">
 			<script>
 			  $(function() {
 			    $('.form-datetime').datetimepicker({

@@ -23,7 +23,7 @@
         <script src="../assets/js/amazeui.js"></script>
 		<script src="../assets/js/highcharts.js"></script>
         <script src="../assets/js/modules/exporting.js"></script>
-				<script type="text/javascript">
+		<script type="text/javascript">
 				
 	$(document).ready(function(){
 		chart1();chart2();
@@ -47,7 +47,7 @@
 		        tooltip: {
 		            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
 		            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+		                '<td style="padding:0"><b>{point.y} </b></td></tr>',
 		            footerFormat: '</table>',
 		            shared: true,
 		            useHTML: true
@@ -109,7 +109,7 @@
 			var et = $("#endTime1").val();
 			var url="statisRegTime.action?bt="+bt+"&et="+et;
 			window.location.href=url;
-			location.reload();
+			
 		}
 		
 		function pro(){
@@ -117,18 +117,19 @@
 			var et = $("#endTime2").val();
 			var url="statisProTime.action?bt="+bt+"&et="+et;
 			window.location.href=url;
-			location.reload();
+			
 			
 		}
 		
 		function all(){
 			var url="statis.action";
 			window.location.href=url;
-			location.reload();
+			
 		}
 		
 		</script>
 		
+		<script src="../assets/js/amazeui.datetimepicker.js"></script>
 	</head>
 	<body >
 		
@@ -185,9 +186,11 @@
     </ul>
     <div class="am-tabs-bd">
       <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+      
        	<table id="table1" class="am-table am-table-striped am-table-hover table-main">
  	<tr>
- 	<td><input id="beginTime1" name="beginTime1"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
+ 	
+	<td><input id="beginTime1" name="beginTime1"  size="16" type="text" value="开始时间" class="form-datetime am-form-field">
 			<script>
 			  $(function() {
 			    $('.form-datetime').datetimepicker({
@@ -209,6 +212,7 @@
 			  });
 			</script>
 			</td>
+			
  	<td><input type="button" onclick="reg();" value="查询" /></td>
  	<td><input type="button" onclick="all();" value="显示所有统计"/></td>
     </tr>

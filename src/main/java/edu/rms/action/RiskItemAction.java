@@ -154,6 +154,7 @@ public class RiskItemAction extends BaseAction{
 			riskItem_unmodify.setProbability(riskItem_hasmodify.getProbability());
 			riskItem_unmodify.setThreshold(riskItem_hasmodify.getThreshold());
 			riskItemBusiness.modifyRiskItem(riskItem_unmodify);
+			req.setAttribute("raId", (int)session.get("showRAId"));
 			return SUCCESS;
 					
 			}

@@ -82,10 +82,10 @@
 	
       <table align="center" style="border-collapse: separate;border-spacing: 10px">
          <tr>
-          <td><s:textfield name="riskItem_hasmodify.content" value="riskItem_unmodify.content" label="风险内容" required="required"/></td>
+          <td><s:textfield name="riskItem_hasmodify.content"  label="风险内容" required="required"/></td>
           <td><s:select name="riskItem_hasmodify.probability" list="#{'1':'高', '2':'中', '3':'低'}" label="可能性" required="required"/></td>
           <td><s:select name="riskItem_hasmodify.effects" list="#{'1':'高', '2':'中', '3':'低'}" label="影响程度" required="required"/></td>
-          <td><s:textfield name="riskItem_hasmodify.threshold" value="riskItem_unmodify.threshold" label="触发器/阙值" required="required"/></td>
+          <td><s:textfield name="riskItem_hasmodify.threshold"  label="触发器/阙值" required="required"/></td>
              
         </tr>
        

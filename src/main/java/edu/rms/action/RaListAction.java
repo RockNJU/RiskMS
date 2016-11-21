@@ -30,24 +30,20 @@ public class RaListAction extends BaseAction{
 	@Autowired
 	private RiskStateTrackBusiness riskstatetrackbusiness;
 	
-	//所有的风险计划
+
 	private List<RaList> allralist;
-	
-	//单个风险计划id和id下的所有风险条目
+
 	private int ralist_id;
 	private List<RiskItem> riskitem;
-	
-	//所增加的风险计划和该风险计划下所有的风险条目id
+
 	private RaList add_ralist;
 	private List<String> tempIdList;
 	
-	//所有可选的风险条目
+
 	private List<RiskItem> optionalItemList;
 	private List<RiskItem> selectedItemList;
 	
-	//我觉得这个需要看界面是怎么要的
-	//查询到的被识别最多的风险条目的信息
-	//查询到的转变成问题最多的风险条目的信息
+
 	private RaList unmodifyRA;
 	private RaList hasmodifyRA;
 
@@ -253,15 +249,22 @@ public class RaListAction extends BaseAction{
 	}
 	
 	public String getRAtoModify(){
+		int id = 0;
+		if(req.getParameter("raId")==null){
+			id=(int)(req.getAttribute("raId"));
+		}else{
+		 id = Integer.parseInt(req.getParameter("raId"));
+		}
 		
-		int id = Integer.parseInt(req.getParameter("raId"));
+		session.put("showRAId", id);
 		
 		List<String> itemIdList = raitemsbusiness.getOneRAItems(id);
 		
 		session.put("tempItemId", itemIdList);
 		unmodifyRA = ralistbusiness.getRAbyId(id);
 		session.put("unmodifyRA", unmodifyRA);
-		getAllItem();
+		optionalItemList = riskitembusiness.getAllRiskItem();
+		session.put("optionList", optionalItemList);
 		refreshTempItemListTable();
 		
 		return SUCCESS;
@@ -270,8 +273,7 @@ public class RaListAction extends BaseAction{
 	public String updateRAtoModify(){
 		List<String> itemList = (List<String>)session.get("tempItemId");
 		unmodifyRA = (RaList)session.get("unmodifyRA");
-		
-		//三个参数分别为  要更新的RA的id  修改的name和条目列表的条目id
+
 		 ralistbusiness.updateRAbyId(unmodifyRA.getRa_id(),hasmodifyRA.getRa_name(),itemList);
 		 
 		 
@@ -282,7 +284,9 @@ public class RaListAction extends BaseAction{
 			session.put("tempItemId", itemIdList);
 			unmodifyRA = ralistbusiness.getRAbyId(unmodifyRA.getRa_id());
 			session.put("unmodifyRA", unmodifyRA);
-			getAllItem();
+			optionalItemList = riskitembusiness.getAllRiskItem();
+			session.put("optionList", optionalItemList);
+			allralist=ralistbusiness.getAll();
 			refreshTempItemListTable();
 		return SUCCESS;
 	}

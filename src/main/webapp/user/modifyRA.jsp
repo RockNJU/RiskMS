@@ -25,19 +25,19 @@
 		function reg(){
 			var bt = $("#beginTime").val();
 			var et = $("#endTime").val();
-			var url="sortReg.action?bt="+bt+"&et="+et;
+			var url="sortRegRA.action?bt="+bt+"&et="+et;
 			window.location.href=url;
 		}
 		function pro(){
 			var bt = $("#beginTime").val();
 			var et = $("#endTime").val();
-			var url="sortPro.action?bt="+bt+"&et="+et;
+			var url="sortProRA.action?bt="+bt+"&et="+et;
 			window.location.href=url;
 		}
 		function all(){
 			var bt = $("#beginTime").val();
 			var et = $("#endTime").val();
-			var url="sortItem.action?bt="+bt+"&et="+et;
+			var url="sortItemRA.action?bt="+bt+"&et="+et;
 			window.location.href=url;
 		}
 		
