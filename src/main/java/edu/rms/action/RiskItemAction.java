@@ -141,12 +141,14 @@ public class RiskItemAction extends BaseAction{
 			String id = (String)(req.getParameter("modifyItemId"));
 			session.put("modifyItemId", id);
 			riskItem_unmodify=riskItemBusiness.getRiskById(id);
+			session.put("unmodifyItem",riskItem_unmodify );
 			return SUCCESS;
 			
 		}
 		
 		//更新风险条目，把界面修改后的条目更新到数据库
 		public String updateRiskItem(){
+			riskItem_unmodify = (RiskItem)session.get("unmodifyItem");
 			riskItem_unmodify.setContent(riskItem_hasmodify.getContent());
 			riskItem_unmodify.setEffects(riskItem_hasmodify.getEffects());
 			riskItem_unmodify.setProbability(riskItem_hasmodify.getProbability());
