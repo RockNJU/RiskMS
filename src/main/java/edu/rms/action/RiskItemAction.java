@@ -96,14 +96,14 @@ public class RiskItemAction extends BaseAction{
 	public void setSelectedUserList(String[] selectedUserList) {
 		this.selectedUserList = selectedUserList;
 	}
-	//获得�?有风险条�?
+	
 	public String getAllRiskItem(){	
 		riskItemList =  riskItemBusiness.getAllRiskItem();	
 		getOptionalTrackers();
 		return SUCCESS;
 	}
 	
-	//获得当前登录人员可参与的风险条目
+	
 	public String getMyRiskItem(){	
 		User current=(User) session.get("developer");
 		
@@ -112,13 +112,13 @@ public class RiskItemAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	//获得可�?�的跟踪�?
+	
 	public void getOptionalTrackers(){
 		optionalUserList = userBusiness.getOptionalTrackers();
 		
 	}
 	
-	//增加风险条目
+	
 	public String addRiskItem(){
 
 		riskItem_add.setSubmitter(((User) session.get("manager")).getUser_id());
@@ -136,7 +136,7 @@ public class RiskItemAction extends BaseAction{
 		
 	}
 	
-	//修改风险条目，主要是获取要修改的对象给界面
+	
 		public String modifyRiskItem(){
 			String id = (String)(req.getParameter("modifyItemId"));
 			session.put("modifyItemId", id);
@@ -146,7 +146,6 @@ public class RiskItemAction extends BaseAction{
 			
 		}
 		
-		//更新风险条目，把界面修改后的条目更新到数据库
 		public String updateRiskItem(){
 			riskItem_unmodify = (RiskItem)session.get("unmodifyItem");
 			riskItem_unmodify.setContent(riskItem_hasmodify.getContent());

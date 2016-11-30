@@ -37,7 +37,7 @@
 	<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
-         <li><a href="../user/showAllRiskItemForDeveloper"><span class="am-icon-calendar"></span> 返回</a></li>
+         <li><a href="../admin/showAllRiskItemForDeveloper"><span class="am-icon-calendar"></span> 返回</a></li>
         
       </ul>
 

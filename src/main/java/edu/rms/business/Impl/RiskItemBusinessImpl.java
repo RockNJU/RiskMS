@@ -109,9 +109,7 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 		
 		String[] temp;
 		List<RiskItem> result=new ArrayList<RiskItem>();
-		System.out.println("shuchu"+beginTime+" "+endTime);
 		if(re==null){
-			System.out.println("nullle");
 			return null;
 		}else{
 			
@@ -120,7 +118,6 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 			
 			result.add(riskItemDao.getRiskById(temp[0]));
 		}
-		System.out.println("查询到的size"+result.size());
 		return result;
 		}
 		
@@ -152,7 +149,7 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 
 	
 	private static boolean valiDateTimeWithLongFormat(String timeStr) {
-		String format = "((19|20)[0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01]) "
+		String format = "((18|19|20)[0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01]) "
 				+ "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 		Pattern pattern = Pattern.compile(format);
 		Matcher matcher = pattern.matcher(timeStr);
@@ -223,7 +220,6 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 			str=rDao.getRecTimes(beginTime, endTime);
 		}
 		
-		
 		Map<String, Integer> re=new HashMap<String, Integer>();
 		if(str==null){
 			return null;
@@ -242,14 +238,15 @@ public class RiskItemBusinessImpl implements RiskItemBusiness{
 
 	@Override
 	public Map<String, Integer> getRiskOrderByProTime(String beginTime, String endTime) {
+		
 		boolean dateType=valiDateTimeWithLongFormat(beginTime);	
 		List<String> str=new ArrayList<String>();
 		if(!dateType){
 			str=rDao.getProblemNoTime();
 		}else{
 			str=rDao.getProblemTimes(beginTime, endTime);
+			
 		}
-		
 		
 		Map<String, Integer> re=new HashMap<String, Integer>();
 		if(str==null){

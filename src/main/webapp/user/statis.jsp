@@ -84,7 +84,7 @@
 		        tooltip: {
 		            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
 		            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+		                '<td style="padding:0"><b>{point.y} </b></td></tr>',
 		            footerFormat: '</table>',
 		            shared: true,
 		            useHTML: true
@@ -119,14 +119,7 @@
 			window.location.href=url;
 			
 			
-		}
-		
-		function all(){
-			var url="statis.action";
-			window.location.href=url;
-			
-		}
-		
+		}	
 		</script>
 		
 		<script src="../assets/js/amazeui.datetimepicker.js"></script>
@@ -214,7 +207,6 @@
 			</td>
 			
  	<td><input type="button" onclick="reg();" value="查询" /></td>
- 	<td><input type="button" onclick="all();" value="显示所有统计"/></td>
     </tr>
     </table>
       <div id="riskRatioReg" style="min-width:700px;height:400px"></div>
@@ -245,7 +237,6 @@
 			</script>
 			</td>
  	<td><input type="button" onclick="pro();" value="查询" /></td>
- 	<td><input type="button" onclick="all();" value="显示所有统计"/></td>
     </tr>
     </table>
       <div id="riskRatioPro" style="min-width:700px;height:400px"></div>

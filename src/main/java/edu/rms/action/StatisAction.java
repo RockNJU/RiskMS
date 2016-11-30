@@ -59,32 +59,24 @@ public class StatisAction extends BaseAction {
 	}
 
 	public String riskStatis() throws ServletException,IOException{
-	
 	    allReg();
 	    allPro();
-	   
 		return SUCCESS;
 	}
 	
 	public String proStatisOrder() throws ServletException,IOException{
-		
-		allReg();
 		proStatisWithTime();
-		regStatisWithTime();
-	    allPro();
-	   
+		allReg();
 		return SUCCESS;
 	}
 	
 	public String regStatisOrder() throws ServletException,IOException{
 		regStatisWithTime();
 	    allPro();
-		 ;
 		return SUCCESS;
 	}
 	
 	private void allPro(){
-		//得到所有的风险条目按转成问题次数从多到少排列   存到map中，String放置风险的content，Integer放置次数
 		Map<String,Integer> proRisk=riskitembusiness.getRiskOrderByPro();
 		Iterator<String> iter2 = proRisk.keySet().iterator();
 		itemsPro.append("[");
@@ -100,8 +92,6 @@ public class StatisAction extends BaseAction {
 	}
 	
 	private void allReg(){
-		//得到所有的风险条目按被识别次数从多到少排列   存到map中，String放置风险的content，Integer放置被识别次数
-		
 		Map<String,Integer> regRisk=riskitembusiness.getRiskOrderByReg();
 		Iterator<String> iter = regRisk.keySet().iterator();
 		itemsReg.append("[");
@@ -122,7 +112,6 @@ public class StatisAction extends BaseAction {
 		riskRatioReg = new StringBuilder();
 		String beginTime = (String)(req.getParameter("bt"));
 		String endTime = (String)(req.getParameter("et"));
-		//得到所有的风险条目 在指定时间内 按被识别次数从多到少排列   存到map中，String放置风险的content，Integer放置被识别次数
 		Map<String,Integer> regRisk=riskitembusiness.getRiskOrderByRegTime(beginTime,endTime);
 		
 		if(regRisk==null){
@@ -130,7 +119,6 @@ public class StatisAction extends BaseAction {
 			riskRatioReg.append("[]");
 			return SUCCESS;
 		}else{
-			System.out.println("adada  "+beginTime+" "+endTime+"  "+regRisk.size());
 		Iterator<String> iter = regRisk.keySet().iterator();
 		itemsReg.append("[");
 		riskRatioReg.append("[");
@@ -152,7 +140,6 @@ public class StatisAction extends BaseAction {
 		riskRatioPro = new StringBuilder();
 		String beginTime = (String)(req.getParameter("bt"));
 		String endTime = (String)(req.getParameter("et"));
-		//得到所有的风险条目  在指定时间内  按转成问题次数从多到少排列   存到map中，String放置风险的content，Integer放置次数
 		Map<String,Integer> proRisk=riskitembusiness.getRiskOrderByProTime(beginTime,endTime);
 		
 		if(proRisk==null){
@@ -160,7 +147,6 @@ public class StatisAction extends BaseAction {
 			riskRatioReg.append("[]");
 			return SUCCESS;
 		}else{
-			System.out.println("adada  "+beginTime+" "+endTime+"  "+proRisk.size());
 		Iterator<String> iter2 = proRisk.keySet().iterator();
 		itemsPro.append("[");
 		riskRatioPro.append("[");

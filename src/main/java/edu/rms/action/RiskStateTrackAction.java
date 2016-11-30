@@ -114,7 +114,6 @@ public class RiskStateTrackAction extends BaseAction{
 		this.modify_content = modify_content;
 	}
 
-	//鑾峰緱褰撳墠椋庨櫓鏉＄洰鐨勬墍鏈夌姸鎬佷俊鎭垪锟�?
 	public String getOneRiskAllStates() throws ServletException,IOException{
 		riskItemId=Integer.parseInt(req.getParameter("riskItemId"));
 		if(riskItemId==0){
@@ -134,7 +133,7 @@ public class RiskStateTrackAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	//鏂板
+	
 	public String save(){
 		if(riskItemId==0){
 			riskItemId=(Integer)session.get("riskItem_id");

@@ -73,17 +73,13 @@ public class RaItemsDaoImpl implements RaItemsDao{
 	public String delete(int ra_id) {
 		
 		try {
-            Session session = baseDao.getNewSession();
-          
-           
+            Session session = baseDao.getNewSession();        
 			String hql = "delete edu.rms.model.RaItems where ra_id = "+ra_id;
-			Query query=session.createQuery(hql);
-			
+			Query query=session.createQuery(hql);			
 			query.executeUpdate();
 			session.flush();
 			session.clear();
-			session.close();
-			
+			session.close();			
 			return "success";
 		}catch (Exception e) {			
 			e.printStackTrace();	
